@@ -1,0 +1,7 @@
+= vasputils changelog
+
+== Master (for 0.0.1)
+* Change indent character from tab to two spaces.
+* Add bin/escapezsh
+
+== Version 0.0.0

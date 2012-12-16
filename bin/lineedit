@@ -18,16 +18,16 @@ op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
 op.parse!(ARGV)
 
 module TextFilter
-	def self.process_stream(in_io, out_io)
-		in_io.each do |line|
-			if OPTIONS[:sort]
-				out_io.puts line.chomp.split(//).sort.join('')
-			end
-			if OPTIONS[:random]
-				out_io.puts line.chomp.split(//).sort_by{rand}.join('')
-			end
-		end
-	end
+  def self.process_stream(in_io, out_io)
+    in_io.each do |line|
+      if OPTIONS[:sort]
+        out_io.puts line.chomp.split(//).sort.join('')
+      end
+      if OPTIONS[:random]
+        out_io.puts line.chomp.split(//).sort_by{rand}.join('')
+      end
+    end
+  end
 end
 
 OPTIONS[:overwrite] ||= false

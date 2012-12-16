@@ -19,11 +19,11 @@ OLD_PATTERN = ARGV.shift
 NEW_STR = ARGV.shift
 
 module TextFilter
-	def self.process_stream(in_io, out_io)
-		in_io.each do |line|
-			out_io.puts line.sub(OLD_PATTERN, NEW_STR)
-		end
-	end
+  def self.process_stream(in_io, out_io)
+    in_io.each do |line|
+      out_io.puts line.sub(OLD_PATTERN, NEW_STR)
+    end
+  end
 end
 
 OPTIONS[:overwrite] ||= false
