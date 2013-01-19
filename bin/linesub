@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 # coding: utf-8
 #
-# USAGE: textfilter [options] str0 str1 files ...
+# USAGE: linesub [options] str0 str1 files ...
 
 require "pp"
 require "optparse"
@@ -28,7 +28,4 @@ end
 
 OPTIONS[:overwrite] ||= false
 
-
-#pp OPTIONS[:overwrite]
-#TextFilter.run(ARGV, OPTIONS[:overwrite])
 TextFilter.run(ARGV, OPTIONS[:overwrite])

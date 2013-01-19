@@ -1,0 +1,30 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+#
+# USAGE: lineescapezsh [options] files ...
+
+require "pp"
+require "optparse"
+require "rubygems"
+#gem "tefil"
+require "tefil.rb"
+gem     "builtinextension"
+require "string_escape_zsh"
+
+## option analysis
+OPTIONS = {}
+op = OptionParser.new
+op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.parse!(ARGV)
+
+module TextFilter
+  def self.process_stream(in_io, out_io)
+    in_io.each do |line|
+      out_io.puts line.escape_zsh
+    end
+  end
+end
+
+OPTIONS[:overwrite] ||= false
+
+TextFilter.run(ARGV, OPTIONS[:overwrite])
