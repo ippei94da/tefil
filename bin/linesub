@@ -13,6 +13,7 @@ require "tefil.rb"
 OPTIONS = {}
 op = OptionParser.new
 op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.on("-g"    , "--global"    , "Globally substitute."){    OPTIONS[:global] = true}
 op.parse!(ARGV)
 
 OLD_PATTERN = ARGV.shift
@@ -21,7 +22,11 @@ NEW_STR = ARGV.shift
 module TextFilter
   def self.process_stream(in_io, out_io)
     in_io.each do |line|
-      out_io.puts line.sub(OLD_PATTERN, NEW_STR)
+      if OPTIONS[:global]
+        out_io.puts line.gsub(OLD_PATTERN, NEW_STR)
+      else
+        out_io.puts line.sub(OLD_PATTERN, NEW_STR)
+      end
     end
   end
 end

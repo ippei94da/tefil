@@ -10,5 +10,5 @@ group :development do
   gem "bundler", "~> 1.2.2"
   gem "jeweler", "~> 1.8.3"
   gem "simplecov", ">= 0"
-  gem "psych", ">= 0"
+  #gem "psych", ">= 0"
 end

@@ -4,5 +4,7 @@
 * Change indent character from tab to two spaces.
 * Rename textfilter to linesub
 * Add bin/lineescapezsh
+* Add bin/formcolumn
+* Add -g option to bin/linesub
 
 == Version 0.0.0
