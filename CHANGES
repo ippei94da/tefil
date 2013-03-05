@@ -1,6 +1,8 @@
 = vasputils changelog
 
-== Master (for 0.0.1)
+== Master (for 0.0.2)
+
+== Version 0.0.1
 * Change indent character from tab to two spaces.
 * Rename textfilter to linesub
 * Add bin/lineescapezsh
@@ -8,3 +10,4 @@
 * Add -g option to bin/linesub
 
 == Version 0.0.0
+* Initial release.
