@@ -5,35 +5,40 @@
 
 Gem::Specification.new do |s|
   s.name = "tefil"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["ippei94da"]
-  s.date = "2012-04-03"
+  s.date = "2013-03-05"
   s.description = "This gem provides a framework of text filter.\n    Tefil eneable to make text filter commands which have overwrite option easily.\n  "
   s.email = "ippei94da@gmail.com"
-  s.executables = ["lineedit", "textfilter"]
+  s.executables = ["formcolumn", "lineedit", "lineescapezsh", "linesub"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
   ]
   s.files = [
     ".document",
+    "CHANGES",
     "Gemfile",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "bin/formcolumn",
     "bin/lineedit",
-    "bin/textfilter",
+    "bin/lineescapezsh",
+    "bin/linesub",
     "lib/tefil.rb",
+    "tefil.gemspec",
+    "test/formcolumn_space",
     "test/helper.rb",
     "test/test_tefil.rb"
   ]
   s.homepage = "http://github.com/ippei94da/tefil"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.21"
+  s.rubygems_version = "1.8.23"
   s.summary = "Basic framework of text filter"
 
   if s.respond_to? :specification_version then
@@ -41,20 +46,23 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.1.3"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.2.2"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<psych>, [">= 0"])
     else
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
-      s.add_dependency(%q<bundler>, ["~> 1.1.3"])
+      s.add_dependency(%q<bundler>, ["~> 1.2.2"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<psych>, [">= 0"])
     end
   else
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
-    s.add_dependency(%q<bundler>, ["~> 1.1.3"])
+    s.add_dependency(%q<bundler>, ["~> 1.2.2"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
     s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<psych>, [">= 0"])
   end
 end
 
