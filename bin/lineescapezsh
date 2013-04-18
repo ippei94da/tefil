@@ -9,7 +9,7 @@ require "rubygems"
 #gem "tefil"
 require "tefil.rb"
 gem     "builtinextension"
-require "string_escape_zsh"
+require "string/escapezsh"
 
 ## option analysis
 OPTIONS = {}

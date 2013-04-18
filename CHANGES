@@ -1,6 +1,7 @@
 = vasputils changelog
 
 == Master (for 0.0.2)
+* Adjust to builtinextension-0.1.0.
 
 == Version 0.0.1
 * Change indent character from tab to two spaces.
