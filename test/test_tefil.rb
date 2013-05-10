@@ -6,7 +6,7 @@ require "stringio"
 require "tempfile"
 require "fileutils"
 
-module TextFilter
+module Tefil
   def self.process_stream(in_file, out_file)
     results = []
     in_file.each do |line|
@@ -40,8 +40,8 @@ class TestTefil < Test::Unit::TestCase
 
   def test_self_run
     # Not found
-    assert_raise(Errno::ENOENT){ TextFilter.run([""]) }
-    assert_raise(Errno::ENOENT){ TextFilter.run([""], true) }
+    assert_raise(Errno::ENOENT){ Tefil.run([""]) }
+    assert_raise(Errno::ENOENT){ Tefil.run([""], true) }
 
     # ファイル指定なしで標準入力
     $stdin = StringIO.new
@@ -50,7 +50,7 @@ class TestTefil < Test::Unit::TestCase
     $stdin.rewind
     # stdout
     $stdout = StringIO.new
-    TextFilter.run([], false)
+    Tefil.run([], false)
     $stdout.rewind
     t = $stdout.readlines
     assert_equal([ "Abc\n", "def\n" ], t)
@@ -61,7 +61,7 @@ class TestTefil < Test::Unit::TestCase
     $stdin.puts "def"
     $stdin.rewind
     $stdout = StringIO.new
-    TextFilter.run([], true)
+    Tefil.run([], true)
     $stdout.rewind
     t = $stdout.readlines
     assert_equal([ "Abc\n", "def\n" ], t)
@@ -71,7 +71,7 @@ class TestTefil < Test::Unit::TestCase
     # overwrite なし。
     setup
     $stdout = StringIO.new
-    TextFilter.run([TMP00])
+    Tefil.run([TMP00])
     $stdout.rewind
     tmp = $stdout.readlines
     assert_equal(["Abc\n", "def\n"], tmp)
@@ -84,7 +84,7 @@ class TestTefil < Test::Unit::TestCase
     # overwrite あり
     setup
     $stdout = StringIO.new
-    TextFilter.run([TMP00], true)
+    Tefil.run([TMP00], true)
     $stdout.rewind
     tmp = $stdout.readlines
     assert_equal([], tmp)
@@ -98,7 +98,7 @@ class TestTefil < Test::Unit::TestCase
     # overwrite なし。
     setup
     $stdout = StringIO.new
-    TextFilter.run([TMP00, TMP01])
+    Tefil.run([TMP00, TMP01])
     $stdout.rewind
     tmp = $stdout.readlines
     assert_equal(["Abc\n", "def\n", "Abc\n", "def\n", "cAb\n"], tmp)
@@ -111,7 +111,7 @@ class TestTefil < Test::Unit::TestCase
     # overwrite あり。
     setup
     $stdout = StringIO.new
-    TextFilter.run([TMP00, TMP01], true)
+    Tefil.run([TMP00, TMP01], true)
     $stdout.rewind
     stdout = $stdout.readlines
     assert_equal([], stdout)
@@ -124,23 +124,6 @@ class TestTefil < Test::Unit::TestCase
     # グローバル変数の標準出力、標準入力を元に戻す。
     $stdout = STDOUT
     $stdin  = STDIN
-  end
-
-  def test_textfilter_command
-    #result = `echo "ab" | textfilter a A`
-    #assert_equal("Ab\n", result)
-
-    #setup
-    #result = `textfilter a A #{TMP00}`
-    #assert_equal("Abc\ndef\n", result)
-    #str = File.open(TMP00, "r").read
-    #assert_equal("abc\ndef\n", str)
-
-    #setup
-    #result = `textfilter -o a A #{TMP00}`
-    #assert_equal("", result)
-    #str = File.open(TMP00, "r").read
-    #assert_equal("Abc\ndef\n", str)
   end
 
 end

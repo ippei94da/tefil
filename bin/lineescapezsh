@@ -17,7 +17,7 @@ op = OptionParser.new
 op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
 op.parse!(ARGV)
 
-module TextFilter
+module Tefil
   def self.process_stream(in_io, out_io)
     in_io.each do |line|
       out_io.puts line.escape_zsh
@@ -27,4 +27,4 @@ end
 
 OPTIONS[:overwrite] ||= false
 
-TextFilter.run(ARGV, OPTIONS[:overwrite])
+Tefil.run(ARGV, OPTIONS[:overwrite])

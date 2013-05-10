@@ -14,35 +14,18 @@ require "tefil"
 # option analysis
 OPTIONS = {:separator => ' '}
 op = OptionParser.new
-op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
-op.on("-s char"    , "--separator=char"    , "Indicate separator."){|val| OPTIONS[:separator] = val}
+op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.on("-s char", "--separator=char", "Indicate separator."){|val| OPTIONS[:separator] = val}
+op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
 op.parse!(ARGV)
 
-module TextFilter
+module Tefil
   def self.process_stream(in_io, out_io)
     rows = in_io.readlines.map { |line| line.strip.split(INPUT_SEPARATOR) }
-
-    #Obtain max length for each column.
-    max_lengths = []
-    rows.each do |row|
-      row.each_with_index do |item, index|
-        max_lengths[index] ||= 0
-        size = item.size
-        max_lengths[index] = size if max_lengths[index] < size
-      end
-    end
-
-    #Output
-    rows.each do |row|
-      new_items = []
-      row.each_with_index do |item, index|
-        new_items[index] = sprintf("%#{max_lengths[index]}s", item )
-      end
-      out_io.puts new_items.join(OPTIONS[:separator])
-    end
+    Tefil::ColumnFormer.form(rows, out_io, OPTIONS[:separator], OPTIONS[:left])
   end
 end
 
 OPTIONS[:overwrite] ||= false
 
-TextFilter.run(ARGV, OPTIONS[:overwrite])
+Tefil.run(ARGV, OPTIONS[:overwrite])

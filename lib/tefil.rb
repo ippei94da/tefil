@@ -26,7 +26,7 @@ require "tempfile"
 # If indicated file(s) not found,
 # this program notify on stderr and does not throw an exception.
 #
-module TextFilter
+module Tefil
 
   class NotRedefinedMethodError < Exception; end
   class TypeError < Exception; end
@@ -73,10 +73,11 @@ module TextFilter
   # An argument 'in_io' indicates an io (file handle) for input.
   # Another argument 'out_io' indicates an io (file handle) for output.
   # This method must be redefined in a subclass or be overridden.
-  # If not redefined, raise an exception TextFilter::NotRedefinedMethodError.
+  # If not redefined, raise an exception Tefil::NotRedefinedMethodError.
   def self.process_stream(in_io, out_io)
     raise NotRedefinedMethodError
   end
 
 end
 
+require "tefil/columnformer"

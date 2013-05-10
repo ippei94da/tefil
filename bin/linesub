@@ -19,7 +19,7 @@ op.parse!(ARGV)
 OLD_PATTERN = ARGV.shift
 NEW_STR = ARGV.shift
 
-module TextFilter
+module Tefil
   def self.process_stream(in_io, out_io)
     in_io.each do |line|
       if OPTIONS[:global]
@@ -33,4 +33,4 @@ end
 
 OPTIONS[:overwrite] ||= false
 
-TextFilter.run(ARGV, OPTIONS[:overwrite])
+Tefil.run(ARGV, OPTIONS[:overwrite])
