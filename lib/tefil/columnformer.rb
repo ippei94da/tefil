@@ -10,6 +10,7 @@ module Tefil::ColumnFormer
     max_lengths = []
     matrix.each do |row|
       row.each_with_index do |item, index|
+        item = item.to_s
         max_lengths[index] ||= 0
         size = item.size
         max_lengths[index] = size if max_lengths[index] < size
@@ -24,7 +25,7 @@ module Tefil::ColumnFormer
       form_left = "-" if left
 
       row.each_with_index do |item, index|
-        new_items[index] = sprintf("%#{form_left}#{max_lengths[index]}s", item )
+        new_items[index] = sprintf("%#{form_left}#{max_lengths[index]}s", item)
       end
       io.puts new_items.join(separator).sub(/ +$/, "")
     end

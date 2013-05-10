@@ -1,6 +1,8 @@
 = vasputils changelog
 
-== Master (for 0.0.3)
+== Master
+
+== Version 0.0.3 [2013-05-10] released
 * Rename TextFilter to Tefil
 * Add Tefil::ColumnFormer
 * Add -l(left alline) option to formcolumn command.
