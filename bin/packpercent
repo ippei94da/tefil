@@ -1,0 +1,46 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+#
+# USAGE: linesub [options] str0 str1 files ...
+
+require "pp"
+require "optparse"
+require "rubygems"
+#gem "tefil"
+require "tefil.rb"
+
+## option analysis
+OPTIONS = {}
+op = OptionParser.new
+op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.parse!(ARGV)
+
+OLD_PATTERN = ARGV.shift
+NEW_STR = ARGV.shift
+
+module Tefil
+  def self.process_stream(in_io, out_io)
+    in_io.each do |line|
+      old_chars = line.split("")
+
+      new_str = ""
+      new_index = 0
+      old_index = 0
+      while old_index < old_chars.size
+        if old_chars[old_index] == "%"
+          new_str += [old_chars[(old_index +1) .. (old_index + 2)].join].pack("H*")
+          old_index += 2
+        else
+          new_str += old_chars[old_index]
+        end
+        old_index += 1
+        new_index += 1
+      end
+      out_io.print new_str
+    end
+  end
+end
+
+OPTIONS[:overwrite] ||= false
+
+Tefil.run(ARGV, OPTIONS[:overwrite])
