@@ -12,6 +12,9 @@ require "tefil.rb"
 ## option analysis
 OPTIONS = {}
 op = OptionParser.new
+op.banner = [
+    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+].join("\n")
 op.on("-s"    , "--sort"    , "Sort."){    OPTIONS[:sort] = true}
 op.on("-r"    , "--randomize" , "Randomize."){    OPTIONS[:random] = true}
 op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}

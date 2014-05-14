@@ -14,6 +14,9 @@ require "tefil"
 # option analysis
 OPTIONS = {:separator => ' '}
 op = OptionParser.new
+op.banner = [
+    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+].join("\n")
 op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
 op.on("-s char", "--separator=char", "Indicate separator."){|val| OPTIONS[:separator] = val}
 op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}

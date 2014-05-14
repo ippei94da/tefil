@@ -1,7 +1,8 @@
 = tefil changelog
 
 == Master
-* add bin/packpercent .
+* Add bin/packpercent .
+* Add usage banner.
 
 == Version 0.0.3 [2013-05-10] released
 * Rename TextFilter to Tefil
