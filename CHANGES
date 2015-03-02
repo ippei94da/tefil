@@ -4,6 +4,8 @@
 * Add bin/packpercent .
 * Add usage banner.
 * Rename bin/formcolumn to columnform
+* Add bin/indentstat .
+* Add bin/indentconv .
 
 == Version 0.0.3 [2013-05-10] released
 * Rename TextFilter to Tefil
