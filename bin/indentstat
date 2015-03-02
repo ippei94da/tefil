@@ -1,0 +1,52 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+#
+# USAGE: formcolumn [options] files ...
+
+require "pp"
+require "optparse"
+require "rubygems"
+require "tefil"
+
+# option analysis
+OPTIONS = {}
+op = OptionParser.new
+#op.banner = [
+#    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+#].join("\n")
+#op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
+#op.on("-s char", "--separator=char", "Indicate separator."){|val| OPTIONS[:separator] = val}
+#op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
+#op.parse!(ARGV)
+
+module Tefil
+  def self.process_stream(in_io, out_io)
+    #rows = in_io.readlines.map { |line| line.strip.split(INPUT_SEPARATOR) }
+    #Tefil::ColumnFormer.form(rows, out_io, OPTIONS[:separator], OPTIONS[:left])
+    frequencies = {}
+    in_io.readlines.each do |line|
+        /^(\s*)/ =~ line
+        width = $1.size
+        frequencies[width] ||= 0
+        frequencies[width] += 1
+    end
+
+    histgram = self.histgram(frequencies)
+
+    out_io.puts histgram
+  end
+
+  def self.histgram(frequencies)
+      result = ''
+      frequencies.keys.sort.each do |key|
+          result += sprintf("%2d|", key)
+          result += "*" * frequencies[key]
+          result += "\n"
+      end
+      result
+  end
+end
+
+OPTIONS[:overwrite] ||= false
+
+Tefil.run(ARGV, OPTIONS[:overwrite])
