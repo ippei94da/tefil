@@ -3,6 +3,7 @@
 == Master
 * Add bin/packpercent .
 * Add usage banner.
+* Rename bin/formcolumn to columnform
 
 == Version 0.0.3 [2013-05-10] released
 * Rename TextFilter to Tefil
