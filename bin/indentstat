@@ -1,7 +1,5 @@
 #! /usr/bin/env ruby
 # coding: utf-8
-#
-# USAGE: formcolumn [options] files ...
 
 require "pp"
 require "optparse"
@@ -16,13 +14,10 @@ op = OptionParser.new
 #].join("\n")
 op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
 op.on("-m", "--minimum", "Show only minimum indent (not zero)."){ OPTIONS[:minimum] = true}
-#op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
 op.parse!(ARGV)
 
 module Tefil
   def self.process_stream(in_io, out_io)
-    #rows = in_io.readlines.map { |line| line.strip.split(INPUT_SEPARATOR) }
-    #Tefil::ColumnFormer.form(rows, out_io, OPTIONS[:separator], OPTIONS[:left])
     frequencies = {}
     in_io.readlines.each do |line|
         #/^(\s*)/ =~ line #改行文字が含まれる。
@@ -34,17 +29,10 @@ module Tefil
 
     if OPTIONS[:minimum]
         frequencies.delete(0)
-        output = frequencies.keys.sort[0]
-        #frequencies.keys.sort.each do |key|
-        #    if frequencies[key] != 0
-        #        output = key
-        #        break
-        #    end
-        #end
+        output = frequencies.keys.min
     else
         output = self.histgram(frequencies)
     end
-    #pp output
 
     out_io.puts output
   end
