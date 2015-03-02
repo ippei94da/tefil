@@ -46,21 +46,24 @@ module Tefil
     if filenames.size == 0 
       self.process_stream( $stdin, $stdout )
     else
-      #p filenames
+      #if filenames.size >= 2
+      #end
       filenames.each do |filename|
         if overwrite_flag
-          tempfile = Tempfile.new("tefil", "/tmp")
-          File.open(filename, "r") do |input_file|
-            self.process_stream(input_file, tempfile)
+          temp_io = Tempfile.new("tefil", "/tmp")
+          File.open(filename, "r") do |input_io|
+            temp_io.print "#{filename}:" if filenames.size >= 2
+            self.process_stream(input_io, temp_io)
           end
-          tempfile.close
-          tempfile.open
+          temp_io.close
+          temp_io.open
           File.open(filename, "w") do |output_file|
-            tempfile.each { |line| output_file.puts(line) }
+            temp_io.each { |line| output_file.puts(line) }
           end
         else
-          File.open(filename, "r") do |input_file|
-            self.process_stream(input_file, $stdout)
+          File.open(filename, "r") do |input_io|
+            $stdout.print "#{filename}:" if filenames.size >= 2
+            self.process_stream(input_io, $stdout)
           end
         end
       end

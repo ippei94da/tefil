@@ -31,7 +31,9 @@ module Tefil
         frequencies.delete(0)
         output = frequencies.keys.min
     else
-        output = self.histgram(frequencies)
+        output = ''
+        output = "\n" if ARGV.size >= 2
+        output += self.histgram(frequencies)
     end
 
     out_io.puts output
