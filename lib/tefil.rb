@@ -49,22 +49,33 @@ module Tefil
       #if filenames.size >= 2
       #end
       filenames.each do |filename|
-        if overwrite_flag
-          temp_io = Tempfile.new("tefil", "/tmp")
-          File.open(filename, "r") do |input_io|
-            temp_io.print "#{filename}:" if filenames.size >= 2
-            self.process_stream(input_io, temp_io)
+        #if File.directory? filename
+        #    $stderr.puts "#{filename} is directory."
+        #    next
+        #end
+          TODO
+
+        begin
+          if overwrite_flag
+            temp_io = Tempfile.new("tefil", "/tmp")
+            File.open(filename, "r") do |input_io|
+              temp_io.print "#{filename}:" if filenames.size >= 2
+              self.process_stream(input_io, temp_io)
+            end
+            temp_io.close
+            temp_io.open
+            File.open(filename, "w") do |output_file|
+              temp_io.each { |line| output_file.puts(line) }
+            end
+          else
+            File.open(filename, "r") do |input_io|
+              $stdout.print "#{filename}:" if filenames.size >= 2
+              self.process_stream(input_io, $stdout)
+            end
           end
-          temp_io.close
-          temp_io.open
-          File.open(filename, "w") do |output_file|
-            temp_io.each { |line| output_file.puts(line) }
-          end
-        else
-          File.open(filename, "r") do |input_io|
-            $stdout.print "#{filename}:" if filenames.size >= 2
-            self.process_stream(input_io, $stdout)
-          end
+        rescue ArgumentError
+          $stdout.puts $!
+          next
         end
       end
     end

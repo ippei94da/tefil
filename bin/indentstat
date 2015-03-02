@@ -6,6 +6,8 @@ require "optparse"
 require "rubygems"
 require "tefil"
 
+HISTGRAM_LIMIT = 50
+
 # option analysis
 OPTIONS = {}
 op = OptionParser.new
@@ -41,9 +43,12 @@ module Tefil
 
   def self.histgram(frequencies)
       result = ''
+      max = frequencies.values.max
       frequencies.keys.sort.each do |key|
+          num = frequencies[key]
+          num = num * HISTGRAM_LIMIT / max if max > HISTGRAM_LIMIT
           result += sprintf("%2d|", key)
-          result += "*" * frequencies[key]
+          result += "*" * num
           result += "\n"
       end
       result
