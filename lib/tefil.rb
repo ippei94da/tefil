@@ -53,7 +53,6 @@ module Tefil
         #    $stderr.puts "#{filename} is directory."
         #    next
         #end
-          TODO
 
         begin
           if overwrite_flag
@@ -73,7 +72,7 @@ module Tefil
               self.process_stream(input_io, $stdout)
             end
           end
-        rescue ArgumentError
+        rescue ArgumentError, Errno::EISDIR
           $stdout.puts $!
           next
         end
