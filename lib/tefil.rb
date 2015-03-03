@@ -31,7 +31,7 @@ class Tefil
   class NotRedefinedMethodError < Exception; end
   class TypeError < Exception; end
 
-  def initialize(options)
+  def initialize(options = {})
     #@options = options
     @overwrite = options[:overwrite]
   end
@@ -46,20 +46,20 @@ class Tefil
   #
   # Process of each file is defined in 'process_stream' method.
   #
-  def self.run(filenames, options)
-    self.class.new(options).run(filenames)
+  def self.filter(filenames, options)
+    self.class.new(options).filter(filenames)
   end
 
-  def run(filenames)
+  def filter(filenames)
     if filenames.size == 0 
-      self.process_stream( $stdin, $stdout )
+      process_stream( $stdin, $stdout )
     else
       filenames.each do |filename|
         begin
-          if overwrite
+          if @overwrite
             temp_io = Tempfile.new("tefil", "/tmp")
             File.open(filename, "r") do |input_io|
-              self.process_stream(input_io, temp_io)
+              process_stream(input_io, temp_io)
             end
             temp_io.close
             temp_io.open
@@ -68,7 +68,7 @@ class Tefil
             end
           else
             File.open(filename, "r") do |input_io|
-              self.process_stream(input_io, $stdout)
+              process_stream(input_io, $stdout)
             end
           end
         rescue ArgumentError, Errno::EISDIR
@@ -86,7 +86,7 @@ class Tefil
   # Another argument 'out_io' indicates an io (file handle) for output.
   # This method must be redefined in a subclass or be overridden.
   # If not redefined, raise an exception Tefil::NotRedefinedMethodError.
-  def self.process_stream(in_io, out_io)
+  def process_stream(in_io, out_io)
     raise NotRedefinedMethodError
   end
 
