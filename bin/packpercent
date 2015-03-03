@@ -13,9 +13,9 @@ require "tefil.rb"
 OPTIONS = {}
 op = OptionParser.new
 op.banner = [
-    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
-    #"  E.g., echo '%E3%83%86%E3%82%B9%E3%83%88' | packpercent" #テスト
-    "  E.g., echo '%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB' | packpercent" #サンプル
+  "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+  #"  E.g., echo '%E3%83%86%E3%82%B9%E3%83%88' | packpercent" #テスト
+  "  E.g., echo '%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB' | packpercent" #サンプル
 ].join("\n")
 op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
 op.parse!(ARGV)

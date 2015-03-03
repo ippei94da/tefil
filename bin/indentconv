@@ -44,20 +44,20 @@ end
 #数値として識別できない文字列(to_i で 0 になる)はタブにする。
 num = ARGV.shift.to_i
 if num == 0
-    FROM_WIDTH = 1
-    FROM_CHAR  = "\t"
+  FROM_WIDTH = 1
+  FROM_CHAR  = "\t"
 else
-    FROM_WIDTH = num
-    FROM_CHAR  = ' '
+  FROM_WIDTH = num
+  FROM_CHAR  = ' '
 end
 
 num = ARGV.shift.to_i
 if num == 0
-    TO_WIDTH = 1
-    TO_CHAR  = "\t"
+  TO_WIDTH = 1
+  TO_CHAR  = "\t"
 else
-    TO_WIDTH = num
-    TO_CHAR  = ' '
+  TO_WIDTH = num
+  TO_CHAR  = ' '
 end
 
 OPTIONS[:overwrite] ||= false

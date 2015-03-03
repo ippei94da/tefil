@@ -42,23 +42,14 @@ module Tefil
   # Process of each file is defined in 'process_stream' method.
   #
   def self.run(filenames, overwrite_flag = false)
-    #p self; exit
     if filenames.size == 0 
       self.process_stream( $stdin, $stdout )
     else
-      #if filenames.size >= 2
-      #end
       filenames.each do |filename|
-        #if File.directory? filename
-        #    $stderr.puts "#{filename} is directory."
-        #    next
-        #end
-
         begin
           if overwrite_flag
             temp_io = Tempfile.new("tefil", "/tmp")
             File.open(filename, "r") do |input_io|
-              temp_io.print "#{filename}:" if filenames.size >= 2
               self.process_stream(input_io, temp_io)
             end
             temp_io.close
@@ -68,7 +59,7 @@ module Tefil
             end
           else
             File.open(filename, "r") do |input_io|
-              $stdout.print "#{filename}:" if filenames.size >= 2
+              #$stdout.print "#{filename}:" if filenames.size >= 2
               self.process_stream(input_io, $stdout)
             end
           end

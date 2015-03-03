@@ -15,43 +15,44 @@ op = OptionParser.new
 #    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 #].join("\n")
 op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
-op.on("-m", "--minimum", "Show only minimum indent (not zero)."){ OPTIONS[:minimum] = true}
+op.on("-m", "--minimum", "Show minimum width (not zero). If no indent, show '0'."){ OPTIONS[:minimum] = true}
 op.parse!(ARGV)
 
 module Tefil
   def self.process_stream(in_io, out_io)
     frequencies = {}
     in_io.readlines.each do |line|
-        #/^(\s*)/ =~ line #改行文字が含まれる。
-        /^( *)/ =~ line
-        width = $1.size
-        frequencies[width] ||= 0
-        frequencies[width] += 1
+      #/^(\s*)/ =~ line #改行文字が含まれる。
+      /^( *)/ =~ line
+      width = $1.size
+      frequencies[width] ||= 0
+      frequencies[width] += 1
     end
 
     if OPTIONS[:minimum]
-        frequencies.delete(0)
-        output = frequencies.keys.min
+      frequencies.delete(0)
+      output = frequencies.keys.min
+      output = 0 if frequencies.empty?
     else
-        output = ''
-        output = "\n" if ARGV.size >= 2
-        output += self.histgram(frequencies)
+      output = ''
+      output = "\n" if ARGV.size >= 2
+      output += self.histgram(frequencies)
     end
 
     out_io.puts output
   end
 
   def self.histgram(frequencies)
-      result = ''
-      max = frequencies.values.max
-      frequencies.keys.sort.each do |key|
-          num = frequencies[key]
-          num = num * HISTGRAM_LIMIT / max if max > HISTGRAM_LIMIT
-          result += sprintf("%2d|", key)
-          result += "*" * num
-          result += "\n"
-      end
-      result
+    result = ''
+    max = frequencies.values.max
+    frequencies.keys.sort.each do |key|
+      num = frequencies[key]
+      num = num * HISTGRAM_LIMIT / max if max > HISTGRAM_LIMIT
+      result += sprintf("%2d|", key)
+      result += "*" * num
+      result += "\n"
+    end
+    result
   end
 end
 
