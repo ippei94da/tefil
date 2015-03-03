@@ -22,7 +22,7 @@ op.parse!(ARGV)
 OLD_STR = ARGV.shift
 NEW_STR = ARGV.shift
 
-module Tefil
+class Tefil
   def self.process_stream(in_io, out_io)
     in_io.each do |line|
       if OPTIONS[:global]

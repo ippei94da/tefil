@@ -17,7 +17,7 @@ op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = tru
 #op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
 op.parse!(ARGV)
 
-module Tefil
+class Tefil
   def self.process_stream(in_io, out_io)
 
     #pp FROM_WIDTH

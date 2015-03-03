@@ -1,11 +1,12 @@
 = tefil changelog
 
-== Master (for 0.0.4)
+== Master (for 0.1.0)
 * Add bin/packpercent .
 * Add usage banner.
 * Rename bin/formcolumn to columnform
 * Add bin/indentstat .
 * Add bin/indentconv .
+* module Tefil converted to class Tefil
 
 == Version 0.0.3 [2013-05-10] released
 * Rename TextFilter to Tefil

@@ -6,7 +6,7 @@ require "stringio"
 require "tempfile"
 require "fileutils"
 
-module Tefil
+class Tefil
   def self.process_stream(in_file, out_file)
     results = []
     in_file.each do |line|
@@ -20,6 +20,19 @@ class TestTefil < Test::Unit::TestCase
   TMP01 = "test/tmp01"
 
   def setup
+    @t00 = Tefil.new
+  end
+
+  def teardown
+  end
+
+  def test_run
+
+
+  end
+
+  def test_run_overwrite
+    #setup
     FileUtils.rm TMP00 if File.exist? TMP00
     FileUtils.rm TMP01 if File.exist? TMP01
     File.open(TMP00, "w") do |io|
@@ -31,18 +44,24 @@ class TestTefil < Test::Unit::TestCase
       io.puts "def"
       io.puts "cab"
     end
-  end
 
-  def teardown
+    #assertion
+    HERE
+
+
+
+    #teardown
     FileUtils.rm TMP00 if File.exist? TMP00
     FileUtils.rm TMP01 if File.exist? TMP01
   end
 
-  def test_self_run
+  def test_run_error
     # Not found
-    assert_raise(Errno::ENOENT){ Tefil.run([""]) }
-    assert_raise(Errno::ENOENT){ Tefil.run([""], true) }
+    assert_raise(Errno::ENOENT){ @t00.run([""]) }
+    assert_raise(Errno::ENOENT){ @t00.run([""], true) }
+  end
 
+  def test_self_run
     # ファイル指定なしで標準入力
     $stdin = StringIO.new
     $stdin.puts "abc"

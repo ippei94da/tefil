@@ -26,10 +26,15 @@ require "tempfile"
 # If indicated file(s) not found,
 # this program notify on stderr and does not throw an exception.
 #
-module Tefil
+class Tefil
 
   class NotRedefinedMethodError < Exception; end
   class TypeError < Exception; end
+
+  def initialize(options)
+    #@options = options
+    @overwrite = options[:overwrite]
+  end
 
   # 保持している入力ファイル対して、順に処理を実行する。
   # filenames.size が 0 ならば STDIN からの入力を待つことになる。
@@ -41,13 +46,17 @@ module Tefil
   #
   # Process of each file is defined in 'process_stream' method.
   #
-  def self.run(filenames, overwrite_flag = false)
+  def self.run(filenames, options)
+    self.class.new(options).run(filenames)
+  end
+
+  def run(filenames)
     if filenames.size == 0 
       self.process_stream( $stdin, $stdout )
     else
       filenames.each do |filename|
         begin
-          if overwrite_flag
+          if overwrite
             temp_io = Tempfile.new("tefil", "/tmp")
             File.open(filename, "r") do |input_io|
               self.process_stream(input_io, temp_io)

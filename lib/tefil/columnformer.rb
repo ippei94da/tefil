@@ -4,7 +4,7 @@
 #
 #
 #
-module Tefil::ColumnFormer
+class Tefil::ColumnFormer
 
   def self.form(matrix, io = $stdout, separator = " ", left = false)
     #Obtain max length for each column.
