@@ -59,7 +59,6 @@ module Tefil
             end
           else
             File.open(filename, "r") do |input_io|
-              #$stdout.print "#{filename}:" if filenames.size >= 2
               self.process_stream(input_io, $stdout)
             end
           end
