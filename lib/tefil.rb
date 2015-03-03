@@ -46,9 +46,9 @@ class Tefil
   #
   # Process of each file is defined in 'process_stream' method.
   #
-  def self.filter(filenames, options)
-    self.class.new(options).filter(filenames)
-  end
+  #def self.filter(filenames, options)
+  #  self.class.new(options).filter(filenames)
+  #end
 
   def filter(filenames)
     if filenames.size == 0 

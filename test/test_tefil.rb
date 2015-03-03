@@ -38,8 +38,10 @@ class TestTefil < Test::Unit::TestCase
     end
   end
 
-  #def teardown
-  #end
+  def teardown
+    FileUtils.rm TMP00 if File.exist? TMP00
+    FileUtils.rm TMP01 if File.exist? TMP01
+  end
 
   def test_filter
     # stdin -> stdout
@@ -60,34 +62,30 @@ class TestTefil < Test::Unit::TestCase
     @t00.filter([TMP00])
     $stdout.rewind
     output = $stdout.readlines
-    assert_equal(["Abc\n", "def\n"], tmp)
+    assert_equal(["Abc\n", "def\n"], output)
     $stdout.close
-    tmp = File.open(TMP00, "r").readlines
-    assert_equal(["Abc\n", "def\n"], tmp)
-    tmp = File.open(TMP01, "r").readlines
-    assert_equal(["abc\n", "def\n", "cab\n"], tmp)
+    tmp00 = File.open(TMP00, "r").readlines
+    assert_equal(["abc\n", "def\n"], tmp00)
+    tmp01 = File.open(TMP01, "r").readlines
+    assert_equal(["abc\n", "def\n", "cab\n"], tmp01)
 
     # 2 files -> stdout
     setup
     $stdout = StringIO.new
-    Tefil.filter([TMP00, TMP01])
+    @t00.filter([TMP00, TMP01])
     $stdout.rewind
-    stdout = $stdout.readlines
+    output = $stdout.readlines
     assert_equal(["Abc\n", "def\n", "Abc\n", "def\n", "cAb\n"],
-                 tmp)
+                 output)
     $stdout.close
-    tmp = File.open(TMP00, "r").readlines
-    assert_equal(["abc\n", "def\n"], tmp)
-    tmp = File.open(TMP01, "r").readlines
-    assert_equal(["abc\n", "def\n", "cAb\n"], tmp)
+    tmp00 = File.open(TMP00, "r").readlines
+    assert_equal(["abc\n", "def\n"], tmp00)
+    tmp01 = File.open(TMP01, "r").readlines
+    assert_equal(["abc\n", "def\n", "cab\n"], tmp01)
 
     # Not found
     assert_raise(Errno::ENOENT){ @t00.filter([""]) }
-    assert_raise(Errno::ENOENT){ @t00.filter([""], true) }
-
-    # stdout and overwrite
-    assert_raise(Tefil::InvalidOption){@t00.filter([], true)}
-
+    assert_raise(Errno::ENOENT){ @t01.filter([""]) }
   end
 
   def test_filter_overwrite
@@ -118,22 +116,6 @@ class TestTefil < Test::Unit::TestCase
     assert_equal(["Abc\n", "def\n", "cAb\n"], tmp)
   end
 
-#
-#    #assertion
-#
-#    #teardown
-#    FileUtils.rm TMP00 if File.exist? TMP00
-#    FileUtils.rm TMP01 if File.exist? TMP01
-#
-#    # グローバル変数の標準出力、標準入力を元に戻す。
-#    $stdout = STDOUT
-#    $stdin  = STDIN
-#
-#  end
-#
-#  def test_filter_error
-#  end
-#
 #  def test_self_filter
 #    $stdin = StringIO.new
 #    $stdin.puts "abc"
