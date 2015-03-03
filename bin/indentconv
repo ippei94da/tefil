@@ -15,10 +15,20 @@ op = OptionParser.new
 op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
 #op.on("-m", "--minimum", "Show only minimum indent (not zero)."){ OPTIONS[:minimum] = true}
 #op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
-#op.parse!(ARGV)
+op.parse!(ARGV)
 
 module Tefil
   def self.process_stream(in_io, out_io)
+
+    #pp FROM_WIDTH
+    #pp TO_WIDTH
+    #pp FROM_CHAR
+    #pp TO_CHAR
+    #if ((FROM_WIDTH == TO_WIDTH) && (FROM_CHAR == TO_CHAR))
+    #    puts "File not change. Exit"
+    #    return
+    #end
+
     in_io.readlines.each do |line|
       /^(#{FROM_CHAR}*)(.*)$/ =~ line
       indent = $1
