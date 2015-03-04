@@ -1,10 +1,25 @@
 #! /usr/bin/env ruby
 # coding: utf-8
 
+INPUT_SEPARATOR = /\s+/
+
 #
 #
 #
-class Tefil::ColumnFormer
+class Tefil::ColumnFormer < Tefil::TextFilterBase
+
+  private
+
+  def process_stream(in_io, out_io)
+    rows = in_io.readlines.map do |line|
+      line.strip.split(INPUT_SEPARATOR)
+    end
+    Tefil::ColumnFormer.form(rows, out_io, OPTIONS[:separator], OPTIONS[:left])
+  end
+
+  def self.print_size(string)
+    string.each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
+  end
 
   def self.form(matrix, io = $stdout, separator = " ", left = false)
     #Obtain max length for each column.
@@ -33,10 +48,5 @@ class Tefil::ColumnFormer
     end
   end
 
-  private
-
-  def self.print_size(string)
-    string.each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
-  end
 end
 

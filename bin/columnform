@@ -3,8 +3,6 @@
 #
 # USAGE: formcolumn [options] files ...
 
-INPUT_SEPARATOR = /\s+/
-
 
 require "pp"
 require "optparse"
@@ -22,13 +20,6 @@ op.on("-s char", "--separator=char", "Indicate separator."){|val| OPTIONS[:separ
 op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
 op.parse!(ARGV)
 
-class Tefil
-  def self.process_stream(in_io, out_io)
-    rows = in_io.readlines.map { |line| line.strip.split(INPUT_SEPARATOR) }
-    Tefil::ColumnFormer.form(rows, out_io, OPTIONS[:separator], OPTIONS[:left])
-  end
-end
-
 OPTIONS[:overwrite] ||= false
 
-Tefil.run(ARGV, OPTIONS[:overwrite])
+Tefil::ColumnFormer.new(OPTIONS).filter(ARGV)

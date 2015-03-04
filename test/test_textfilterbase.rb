@@ -6,7 +6,7 @@ require "stringio"
 require "tempfile"
 require "fileutils"
 
-class Tefil
+class SampleFilter < Tefil::TextFilterBase
   def process_stream(in_file, out_file)
     results = []
     in_file.each do |line|
@@ -20,10 +20,10 @@ class TestTefil < Test::Unit::TestCase
   TMP01 = "test/tmp01"
 
   def setup
-    @t00 = Tefil.new
+    @t00 = SampleFilter.new
     $stdin = STDIN
     $stdout = STDOUT
-    @t01 = Tefil.new({:overwrite => true})
+    @t01 = SampleFilter.new({:overwrite => true})
 
     FileUtils.rm TMP00 if File.exist? TMP00
     FileUtils.rm TMP01 if File.exist? TMP01
@@ -122,7 +122,7 @@ class TestTefil < Test::Unit::TestCase
 #    $stdin.puts "def"
 #    $stdin.rewind
 #    $stdout = StringIO.new
-#    Tefil.filter([], true)
+#    SampleFilter.filter([], true)
 #    $stdout.rewind
 #    t = $stdout.readlines
 #    assert_equal([ "Abc\n", "def\n" ], t)
@@ -132,7 +132,7 @@ class TestTefil < Test::Unit::TestCase
 #    # overwrite なし。
 #    setup
 #    $stdout = StringIO.new
-#    Tefil.filter([TMP00])
+#    SampleFilter.filter([TMP00])
 #    $stdout.rewind
 #    tmp = $stdout.readlines
 #    assert_equal(["Abc\n", "def\n"], tmp)
@@ -146,7 +146,7 @@ class TestTefil < Test::Unit::TestCase
 #    # overwrite なし。
 #    setup
 #    $stdout = StringIO.new
-#    Tefil.filter([TMP00, TMP01])
+#    SampleFilter.filter([TMP00, TMP01])
 #    $stdout.rewind
 #    tmp = $stdout.readlines
 #    assert_equal(["Abc\n", "def\n", "Abc\n", "def\n", "cAb\n"], tmp)
