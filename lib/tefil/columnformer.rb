@@ -3,6 +3,15 @@
 
 INPUT_SEPARATOR = /\s+/
 
+class String
+  #http://www.techscore.com/blog/2012/12/25/
+  def mb_ljust(width, padding=' ')
+    output_width = each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
+    padding_size = [0, width - output_width].max
+    self + padding * padding_size
+  end
+end
+
 #
 #
 #
@@ -14,14 +23,14 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
     rows = in_io.readlines.map do |line|
       line.strip.split(INPUT_SEPARATOR)
     end
-    Tefil::ColumnFormer.form(rows, out_io, OPTIONS[:separator], OPTIONS[:left])
+    form(rows, out_io, OPTIONS[:separator], OPTIONS[:left])
   end
 
-  def self.print_size(string)
+  def print_size(string)
     string.each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
   end
 
-  def self.form(matrix, io = $stdout, separator = " ", left = false)
+  def form(matrix, io = $stdout, separator = " ", left = false)
     #Obtain max length for each column.
     max_lengths = []
     matrix.each do |row|
@@ -36,15 +45,18 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
 
     #Output
     matrix.each do |row|
-      new_items = []
-
-      form_left = ""
-      form_left = "-" if left
-
       row.each_with_index do |item, index|
-        new_items[index] = sprintf("%#{form_left}#{max_lengths[index]}s", item)
+        #new_items[index] = mb_ljust("%#{form_left}#{max_lengths[index]}s", item)
       end
       io.puts new_items.join(separator).sub(/ +$/, "")
+
+      #new_items = []
+      #form_left = ""
+      #form_left = "-" if left
+      #row.each_with_index do |item, index|
+      #  new_items[index] = sprintf("%#{form_left}#{max_lengths[index]}s", item)
+      #end
+      #io.puts new_items.join(separator).sub(/ +$/, "")
     end
   end
 
