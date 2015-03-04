@@ -17,49 +17,24 @@ op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = tru
 #op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
 op.parse!(ARGV)
 
-class Tefil
-  def self.process_stream(in_io, out_io)
-
-    #pp FROM_WIDTH
-    #pp TO_WIDTH
-    #pp FROM_CHAR
-    #pp TO_CHAR
-    #if ((FROM_WIDTH == TO_WIDTH) && (FROM_CHAR == TO_CHAR))
-    #    puts "File not change. Exit"
-    #    return
-    #end
-
-    in_io.readlines.each do |line|
-      /^(#{FROM_CHAR}*)(.*)$/ =~ line
-      indent = $1
-      body = $2
-      #pp indent
-
-      new_width = indent.size * TO_WIDTH / FROM_WIDTH
-      out_io.puts "#{TO_CHAR * new_width}#{body}"
-    end
-  end
-end
-
 #数値として識別できない文字列(to_i で 0 になる)はタブにする。
 num = ARGV.shift.to_i
 if num == 0
-  FROM_WIDTH = 1
-  FROM_CHAR  = "\t"
+  new_char  = "\t"
+  new_width = 1
 else
-  FROM_WIDTH = num
-  FROM_CHAR  = ' '
+  new_char  = ' '
+  new_width = num
 end
 
 num = ARGV.shift.to_i
 if num == 0
-  TO_WIDTH = 1
-  TO_CHAR  = "\t"
+  old_char  = "\t"
+  new_width = 1
 else
-  TO_WIDTH = num
-  TO_CHAR  = ' '
+  old_char  = ' '
+  new_width = num
 end
 
-OPTIONS[:overwrite] ||= false
-
-Tefil.run(ARGV, OPTIONS[:overwrite])
+f = Tefil::IndentConverter.new(old_char, old_width, new_char, new_width, OPTIONS)
+f.filter(ARGV)

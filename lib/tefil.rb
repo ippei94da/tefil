@@ -5,3 +5,4 @@ module Tefil; end
 
 require "tefil/textfilterbase"
 require "tefil/columnformer"
+require "tefil/indentconverter"

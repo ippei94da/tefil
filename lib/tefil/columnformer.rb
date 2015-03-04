@@ -10,6 +10,12 @@ class String
     padding_size = [0, width - output_width].max
     self + padding * padding_size
   end
+
+  def mb_rjust(width, padding=' ')
+    output_width = each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
+    padding_size = [0, width - output_width].max
+    padding * padding_size + self
+  end
 end
 
 #
@@ -37,7 +43,6 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
       row.each_with_index do |item, index|
         item = item.to_s
         max_lengths[index] ||= 0
-        #size = item.size
         size = print_size(item)
         max_lengths[index] = size if max_lengths[index] < size
       end
@@ -45,18 +50,15 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
 
     #Output
     matrix.each do |row|
+      new_items = []
       row.each_with_index do |item, index|
-        #new_items[index] = mb_ljust("%#{form_left}#{max_lengths[index]}s", item)
+        if left
+            new_items[index] = item.mb_ljust(max_lengths[index])
+        else
+            new_items[index] = item.mb_rjust(max_lengths[index])
+        end
       end
       io.puts new_items.join(separator).sub(/ +$/, "")
-
-      #new_items = []
-      #form_left = ""
-      #form_left = "-" if left
-      #row.each_with_index do |item, index|
-      #  new_items[index] = sprintf("%#{form_left}#{max_lengths[index]}s", item)
-      #end
-      #io.puts new_items.join(separator).sub(/ +$/, "")
     end
   end
 
