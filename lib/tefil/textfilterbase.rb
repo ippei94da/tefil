@@ -51,33 +51,39 @@ class Tefil::TextFilterBase
   #end
 
   def filter(filenames)
+    #@filenames = filenames
+    input_io = $stdin
+    output_io = $stdout
     if filenames.size == 0 
-      process_stream( $stdin, $stdout )
+      process_stream( input_io, output_io)
     else
       filenames.each do |filename|
+        #@filename = filename
+        input_io = File.open(filename, "r")
+        output_io = Tempfile.new("tefil", "/tmp") if @overwrite
+        #pp input_io
+        #pp output_io
+
         begin
-          if @overwrite
-            temp_io = Tempfile.new("tefil", "/tmp")
-            File.open(filename, "r") do |input_io|
-              process_stream(input_io, temp_io)
-            end
-            temp_io.close
-            temp_io.open
-            File.open(filename, "w") do |output_file|
-              temp_io.each { |line| output_file.puts(line) }
-            end
-          else
-            File.open(filename, "r") do |input_io|
-              process_stream(input_io, $stdout)
-            end
-          end
+          process_stream(input_io, output_io)
         rescue ArgumentError, Errno::EISDIR
-          $stdout.puts $!
+          $stderr.puts $!
           next
+        end
+
+        input_io.close
+        output_io.close
+
+        if @overwrite
+          output_io.open
+          File.open(filename, "w") do |new_output_io|
+            output_io.each { |line| new_output_io.puts(line) }
+          end
         end
       end
     end
   end
+
 
   private
 

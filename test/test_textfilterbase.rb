@@ -51,15 +51,17 @@ class TestTefil < Test::Unit::TestCase
     $stdin.rewind
     $stdout = StringIO.new
     @t00.filter([])
+    #pp $stdout
     $stdout.rewind
-    t = $stdout.readlines
-    assert_equal([ "Abc\n", "def\n" ], t)
+    output = $stdout.readlines
+    assert_equal([ "Abc\n", "def\n" ], output)
     $stdout.close
 
     # 1 file-> stdout
     setup
     $stdout = StringIO.new
     @t00.filter([TMP00])
+    #pp $stdout
     $stdout.rewind
     output = $stdout.readlines
     assert_equal(["Abc\n", "def\n"], output)
