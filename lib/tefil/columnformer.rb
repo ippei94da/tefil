@@ -52,11 +52,9 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
     matrix.each do |row|
       new_items = []
       row.each_with_index do |item, index|
-        if left
-            new_items[index] = item.mb_ljust(max_lengths[index])
-        else
-            new_items[index] = item.mb_rjust(max_lengths[index])
-        end
+        method = :mb_rjust
+        method = :mb_ljust if left
+        new_items[index] = item.send(method, max_lengths[index])
       end
       io.puts new_items.join(separator).sub(/ +$/, "")
     end

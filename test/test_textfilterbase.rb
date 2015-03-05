@@ -44,18 +44,18 @@ class TestTefil < Test::Unit::TestCase
   end
 
   def test_filter
-    # stdin -> stdout
-    $stdin = StringIO.new
-    $stdin.puts "abc"
-    $stdin.puts "def"
-    $stdin.rewind
-    $stdout = StringIO.new
-    @t00.filter([])
-    #pp $stdout
-    $stdout.rewind
-    output = $stdout.readlines
-    assert_equal([ "Abc\n", "def\n" ], output)
-    $stdout.close
+#    # stdin -> stdout
+#    $stdin = StringIO.new
+#    $stdin.puts "abc"
+#    $stdin.puts "def"
+#    $stdin.rewind
+#    $stdout = StringIO.new
+#    @t00.filter([])
+#    #pp $stdout
+#    $stdout.rewind
+#    output = $stdout.readlines
+#    assert_equal([ "Abc\n", "def\n" ], output)
+#    $stdout.close
 
     # 1 file-> stdout
     setup

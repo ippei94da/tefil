@@ -51,18 +51,16 @@ class Tefil::TextFilterBase
   #end
 
   def filter(filenames)
-    #@filenames = filenames
+    @num_files = filenames.size
     input_io = $stdin
     output_io = $stdout
     if filenames.size == 0 
       process_stream( input_io, output_io)
     else
       filenames.each do |filename|
-        #@filename = filename
+        @filename = filename
         input_io = File.open(filename, "r")
         output_io = Tempfile.new("tefil", "/tmp") if @overwrite
-        #pp input_io
-        #pp output_io
 
         begin
           process_stream(input_io, output_io)
@@ -71,13 +69,10 @@ class Tefil::TextFilterBase
           next
         end
 
-        input_io.close
-        output_io.close
-
         if @overwrite
           output_io.open
-          File.open(filename, "w") do |new_output_io|
-            output_io.each { |line| new_output_io.puts(line) }
+          File.open(filename, "w") do |overwrite_io|
+            output_io.each { |line| overwrite_io.puts(line) }
           end
         end
       end
