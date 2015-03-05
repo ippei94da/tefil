@@ -50,10 +50,8 @@ class Tefil::TextFilterBase
   #  self.class.new(options).filter(filenames)
   #end
 
-  smart_filename_head 
-  line ごとのファイル名表示はここでは提供せず、したければ process_stream で作る。
-  grep のように行数を表示することもありうるし。
-
+  #line ごとのファイル名表示はここでは提供せず、したければ process_stream で作る。
+  #grep のように行数を表示するなど、複雑な表示をすることもありうる。
   def filter(filenames)
     @num_files = filenames.size
     input_io = $stdin
@@ -66,6 +64,7 @@ class Tefil::TextFilterBase
         input_io = File.open(filename, "r")
         output_io = Tempfile.new("tefil", "/tmp") if @overwrite
 
+        output_io.puts smart_filename
         begin
           process_stream(input_io, output_io)
         rescue ArgumentError, Errno::EISDIR
@@ -83,8 +82,19 @@ class Tefil::TextFilterBase
     end
   end
 
-
   private
+
+  # filter メソッドに渡されたファイル数が複数のときには処理中のファイル名を返す。
+  # この挙動が不要な場合はオーバーライドする？
+  TODO
+  def smart_filename
+    if @num_files >= 2
+      return @filename
+    else
+      return ''
+    end
+  end
+
 
   # Process a file.
   # An argument 'in_io' indicates an io (file handle) for input.
