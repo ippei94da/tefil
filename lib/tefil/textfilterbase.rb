@@ -34,6 +34,7 @@ class Tefil::TextFilterBase
 
   def initialize(options = {})
     @overwrite = options[:overwrite]
+    @smart_filename = options[:smart_filename]
   end
 
   # 保持している入力ファイル対して、順に処理を実行する。
@@ -63,8 +64,7 @@ class Tefil::TextFilterBase
         @filename = filename
         input_io = File.open(filename, "r")
         output_io = Tempfile.new("tefil", "/tmp") if @overwrite
-
-        output_io.puts smart_filename
+        smart_filename(output_io) if @smart_filename
         begin
           process_stream(input_io, output_io)
         rescue ArgumentError, Errno::EISDIR
@@ -85,13 +85,9 @@ class Tefil::TextFilterBase
   private
 
   # filter メソッドに渡されたファイル数が複数のときには処理中のファイル名を返す。
-  # この挙動が不要な場合はオーバーライドする？
-  TODO
-  def smart_filename
+  def smart_filename(output_io)
     if @num_files >= 2
-      return @filename
-    else
-      return ''
+      output_io.puts("#{@filename}:")
     end
   end
 

@@ -25,6 +25,8 @@ class TestTefil < Test::Unit::TestCase
     $stdout = STDOUT
     @t01 = SampleFilter.new({:overwrite => true})
 
+    @t02 = SampleFilter.new({:smart_filename => true})
+
     FileUtils.rm TMP00 if File.exist? TMP00
     FileUtils.rm TMP01 if File.exist? TMP01
     File.open(TMP00, "w") do |io|
@@ -61,7 +63,6 @@ class TestTefil < Test::Unit::TestCase
     setup
     $stdout = StringIO.new
     @t00.filter([TMP00])
-    #pp $stdout
     $stdout.rewind
     output = $stdout.readlines
     assert_equal(["Abc\n", "def\n"], output)
@@ -84,6 +85,40 @@ class TestTefil < Test::Unit::TestCase
     assert_equal(["abc\n", "def\n"], tmp00)
     tmp01 = File.open(TMP01, "r").readlines
     assert_equal(["abc\n", "def\n", "cab\n"], tmp01)
+
+    # smart_filename
+    setup
+    $stdout = StringIO.new
+    @t02.filter([TMP00])
+    $stdout.rewind
+    output = $stdout.readlines
+    assert_equal(["Abc\n", "def\n"], output)
+    $stdout.close
+    tmp00 = File.open(TMP00, "r").readlines
+    assert_equal(["abc\n", "def\n"], tmp00)
+    tmp01 = File.open(TMP01, "r").readlines
+    assert_equal(["abc\n", "def\n", "cab\n"], tmp01)
+
+    # 2 files -> stdout
+    setup
+    $stdout = StringIO.new
+    @t02.filter([TMP00, TMP01])
+    $stdout.rewind
+    output = $stdout.readlines
+    assert_equal(["test/tmp00:\n",
+                 "Abc\n",
+                 "def\n",
+                 "test/tmp01:\n",
+                 "Abc\n",
+                 "def\n",
+                 "cAb\n"],
+                 output)
+    $stdout.close
+    tmp00 = File.open(TMP00, "r").readlines
+    assert_equal(["abc\n", "def\n"], tmp00)
+    tmp01 = File.open(TMP01, "r").readlines
+    assert_equal(["abc\n", "def\n", "cab\n"], tmp01)
+
 
     # Not found
     assert_raise(Errno::ENOENT){ @t00.filter([""]) }
