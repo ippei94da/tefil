@@ -50,6 +50,10 @@ class Tefil::TextFilterBase
   #  self.class.new(options).filter(filenames)
   #end
 
+  smart_filename_head 
+  line ごとのファイル名表示はここでは提供せず、したければ process_stream で作る。
+  grep のように行数を表示することもありうるし。
+
   def filter(filenames)
     @num_files = filenames.size
     input_io = $stdin
