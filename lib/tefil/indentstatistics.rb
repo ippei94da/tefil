@@ -1,4 +1,10 @@
 class Tefil::IndentStatistics < Tefil::TextFilterBase
+
+  def initialize(options)
+    options[:smart_filename] = true
+    super(options)
+  end
+
   def process_stream(in_io, out_io)
     frequencies = {}
     in_io.readlines.each do |line|

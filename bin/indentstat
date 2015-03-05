@@ -21,5 +21,5 @@ op.parse!(ARGV)
 
 OPTIONS[:overwrite] ||= false
 
-Tefil::IndentStatistics.new({:smart_filename => true})
+Tefil::IndentStatistics.new
 .run(ARGV, OPTIONS[:overwrite])
