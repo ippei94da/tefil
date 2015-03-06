@@ -20,14 +20,6 @@ op.banner = [
 op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
 op.parse!(ARGV)
 
-class Tefil
-  def self.process_stream(in_io, out_io)
-    in_io.each do |line|
-      out_io.puts line.escape_zsh
-    end
-  end
-end
-
 OPTIONS[:overwrite] ||= false
 
 Tefil.run(ARGV, OPTIONS[:overwrite])

@@ -1,5 +1,7 @@
-require 'helper'
+#! /usr/bin/env ruby
+# coding: utf-8
 
+require 'helper'
 require "test/unit"
 require "tefil.rb"
 require "stringio"
@@ -26,6 +28,8 @@ class TestTefil < Test::Unit::TestCase
     @t01 = SampleFilter.new({:overwrite => true})
 
     @t02 = SampleFilter.new({:smart_filename => true})
+    @t03 = SampleFilter.new({:overwrite => true,
+                            :smart_filename => true})
 
     FileUtils.rm TMP00 if File.exist? TMP00
     FileUtils.rm TMP01 if File.exist? TMP01
@@ -99,26 +103,18 @@ class TestTefil < Test::Unit::TestCase
     tmp01 = File.open(TMP01, "r").readlines
     assert_equal(["abc\n", "def\n", "cab\n"], tmp01)
 
-    # 2 files -> stdout
+    # smart_filename and overwrite # 2 files -> stdout
     setup
     $stdout = StringIO.new
-    @t02.filter([TMP00, TMP01])
+    @t03.filter([TMP00, TMP01])
     $stdout.rewind
-    output = $stdout.readlines
-    assert_equal(["test/tmp00:\n",
-                 "Abc\n",
-                 "def\n",
-                 "test/tmp01:\n",
-                 "Abc\n",
-                 "def\n",
-                 "cAb\n"],
-                 output)
+    stdout = $stdout.readlines
+    assert_equal([], stdout)
     $stdout.close
-    tmp00 = File.open(TMP00, "r").readlines
-    assert_equal(["abc\n", "def\n"], tmp00)
-    tmp01 = File.open(TMP01, "r").readlines
-    assert_equal(["abc\n", "def\n", "cab\n"], tmp01)
-
+    tmp = File.open(TMP00, "r").readlines
+    assert_equal(["Abc\n", "def\n"], tmp)
+    tmp = File.open(TMP01, "r").readlines
+    assert_equal(["Abc\n", "def\n", "cAb\n"], tmp)
 
     # Not found
     assert_raise(Errno::ENOENT){ @t00.filter([""]) }

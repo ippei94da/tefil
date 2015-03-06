@@ -14,26 +14,25 @@ class TC_IndentStatistics < Test::Unit::TestCase
   end
 
   def test_process_stream
-    ## stdin -> stdout
-    #$stdin = StringIO.new
-    #$stdin.puts "a"
-    #$stdin.puts "  b"
-    #$stdin.puts "    c"
-    #$stdin.puts "  d"
-    #$stdin.puts "    e"
-    #$stdin.puts "    f"
-    #$stdin.rewind
-    #$stdout = StringIO.new
-    #@is00.filter([])
-    #$stdout.rewind
-    #t = $stdout.readlines
-    #assert_equal("a\n", t.shift)
-    #assert_equal("    b\n", t.shift)
-    #assert_equal("        c\n", t.shift)
-    #assert_equal("    d\n", t.shift)
-    #assert_equal("        e\n", t.shift)
-    #assert_equal("        f\n", t.shift)
-    #$stdout.close
+    # stdin -> stdout
+    $stdin = StringIO.new
+    $stdin.puts "a"
+    $stdin.puts "  b"
+    $stdin.puts "    c"
+    $stdin.puts "  d"
+    $stdin.puts "    e"
+    $stdin.puts "    f"
+    $stdin.puts "  g"
+    $stdin.puts "    h"
+    $stdin.rewind
+    $stdout = StringIO.new
+    @is00.filter([])
+    $stdout.rewind
+    t = $stdout.readlines
+    assert_equal(" 0|*\n", t.shift)
+    assert_equal(" 2|***\n", t.shift)
+    assert_equal(" 4|****\n", t.shift)
+    $stdout.close
   end
 end
 

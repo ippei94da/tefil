@@ -6,20 +6,19 @@ require "optparse"
 require "rubygems"
 require "tefil"
 
-HISTGRAM_LIMIT = 50
 
 # option analysis
-OPTIONS = {}
+options = {}
 op = OptionParser.new
 #op.banner = [
 #    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 #].join("\n")
-op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
-op.on("-m", "--minimum", "Show minimum width (not zero). If no indent, show '0'."){ OPTIONS[:minimum] = true}
+op.on("-o"     , "--overwrite"     , "Overwrite."){    options[:overwrite] = true}
+op.on("-m", "--minimum", "Show minimum width (not zero). If no indent, show '0'."){ options[:minimum] = true}
 op.parse!(ARGV)
 
 
-OPTIONS[:overwrite] ||= false
+options[:overwrite] ||= false
 
-Tefil::IndentStatistics.new
-.run(ARGV, OPTIONS[:overwrite])
+is = Tefil::IndentStatistics.new options
+is.filter(ARGV)

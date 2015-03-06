@@ -10,32 +10,19 @@ gem "tefil"
 require "tefil.rb"
 
 ## option analysis
-OPTIONS = {}
+options = {}
 op = OptionParser.new
 op.banner = [
     "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 ].join("\n")
-op.on("-s"    , "--sort"    , "Sort."){    OPTIONS[:sort] = true}
-op.on("-r"    , "--randomize" , "Randomize."){    OPTIONS[:random] = true}
-op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.on("-s"    , "--sort"    , "Sort."){    options[:sort] = true}
+op.on("-r"    , "--randomize" , "Randomize."){    options[:random] = true}
+op.on("-o"    , "--overwrite"    , "Overwrite."){    options[:overwrite] = true}
 op.parse!(ARGV)
 
-class Tefil
-  def self.process_stream(in_io, out_io)
-    in_io.each do |line|
-      if OPTIONS[:sort]
-        out_io.puts line.chomp.split(//).sort.join('')
-      end
-      if OPTIONS[:random]
-        out_io.puts line.chomp.split(//).sort_by{rand}.join('')
-      end
-    end
-  end
-end
+options[:overwrite] ||= false
 
-OPTIONS[:overwrite] ||= false
-
-
-#pp OPTIONS[:overwrite]
-#Tefil.run(ARGV, OPTIONS[:overwrite])
-Tefil.run(ARGV, OPTIONS[:overwrite])
+#pp options[:overwrite]
+#Tefil.run(ARGV, options[:overwrite])
+tf = Tefil::LineEditor.new(options)
+tf.filter(ARGV)

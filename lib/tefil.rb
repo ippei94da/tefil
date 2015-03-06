@@ -2,7 +2,12 @@
 # coding: utf-8
 
 module Tefil; end
-
 require "tefil/textfilterbase"
+
 require "tefil/columnformer"
 require "tefil/indentconverter"
+require "tefil/indentstatistics"
+require "tefil/lineeditor"
+require "tefil/linesubstituter"
+require "tefil/percentpacker"
+require "tefil/zshescaper"

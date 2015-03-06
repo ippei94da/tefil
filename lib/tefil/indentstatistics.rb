@@ -1,7 +1,10 @@
 class Tefil::IndentStatistics < Tefil::TextFilterBase
 
-  def initialize(options)
+  HISTGRAM_LIMIT = 50
+
+  def initialize(options = {})
     options[:smart_filename] = true
+    @minimum = options[:minimum]
     super(options)
   end
 
@@ -15,7 +18,7 @@ class Tefil::IndentStatistics < Tefil::TextFilterBase
       frequencies[width] += 1
     end
 
-    if OPTIONS[:minimum]
+    if @minimum
       frequencies.delete(0)
       output = frequencies.keys.min
       output = 0 if frequencies.empty?
