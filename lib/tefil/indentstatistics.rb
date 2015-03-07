@@ -28,8 +28,6 @@ class Tefil::IndentStatistics < Tefil::TextFilterBase
       output += self.histgram(frequencies)
     end
 
-    #$stdout.puts "#{filename}:" if filenames.size >= 2
-
     out_io.puts output
   end
 

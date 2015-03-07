@@ -9,9 +9,10 @@ require "tefil"
 # option analysis
 OPTIONS = {}
 op = OptionParser.new
-#op.banner = [
-#    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
-#].join("\n")
+op.banner = [
+    "Usage: #{File.basename("#{__FILE__}")} old_width new_width [options] [files]",
+    "Example: #{File.basename("#{__FILE__}")} 4 2 [options] [files]",
+].join("\n")
 op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
 #op.on("-m", "--minimum", "Show only minimum indent (not zero)."){ OPTIONS[:minimum] = true}
 #op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
@@ -20,19 +21,19 @@ op.parse!(ARGV)
 #数値として識別できない文字列(to_i で 0 になる)はタブにする。
 num = ARGV.shift.to_i
 if num == 0
-  new_char  = "\t"
-  new_width = 1
+  old_char  = "\t"
+  old_width = 1
 else
-  new_char  = ' '
-  new_width = num
+  old_char  = ' '
+  old_width = num
 end
 
 num = ARGV.shift.to_i
 if num == 0
-  old_char  = "\t"
+  new_char  = "\t"
   new_width = 1
 else
-  old_char  = ' '
+  new_char  = ' '
   new_width = num
 end
 
