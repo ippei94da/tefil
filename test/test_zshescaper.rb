@@ -14,26 +14,16 @@ class TC_ZshEscaper < Test::Unit::TestCase
   end
 
   def test_process_stream
-    assert(false)
-    ## stdin -> stdout
-    #$stdin = StringIO.new
-    #$stdin.puts "a"
-    #$stdin.puts "  b"
-    #$stdin.puts "    c"
-    #$stdin.puts "  d"
-    #$stdin.puts "    e"
-    #$stdin.puts "    f"
-    #$stdin.puts "  g"
-    #$stdin.puts "    h"
-    #$stdin.rewind
-    #$stdout = StringIO.new
-    #@is00.filter([])
-    #$stdout.rewind
-    #t = $stdout.readlines
-    #assert_equal(" 0|*\n", t.shift)
-    #assert_equal(" 2|***\n", t.shift)
-    #assert_equal(" 4|****\n", t.shift)
-    #$stdout.close
+    # stdin -> stdout
+    $stdin = StringIO.new
+    $stdin.puts "abcdABCD * * *"
+    $stdin.rewind
+    $stdout = StringIO.new
+    @is00.filter([])
+    $stdout.rewind
+    t = $stdout.readlines
+    assert_equal('abcdABCD\ \*\ \*\ \*' + "\n", t.shift)
+    $stdout.close
   end
 end
 

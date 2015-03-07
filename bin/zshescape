@@ -8,18 +8,17 @@ require "optparse"
 require "rubygems"
 #gem "tefil"
 require "tefil.rb"
-gem     "builtinextension"
-require "string/escapezsh"
 
 ## option analysis
-OPTIONS = {}
+options = {}
 op = OptionParser.new
 op.banner = [
     "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 ].join("\n")
-op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.on("-o"    , "--overwrite"    , "Overwrite."){    options[:overwrite] = true}
 op.parse!(ARGV)
 
-OPTIONS[:overwrite] ||= false
+options[:overwrite] ||= false
 
-Tefil.run(ARGV, OPTIONS[:overwrite])
+tf = Tefil::ZshEscaper.new(options)
+tf.filter(ARGV)

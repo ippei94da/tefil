@@ -10,18 +10,19 @@ require "rubygems"
 require "tefil.rb"
 
 ## option analysis
-OPTIONS = {}
+options = {}
 op = OptionParser.new
 op.banner = [
     "Usage: #{File.basename("#{__FILE__}")} old_str new_str [options] [files]",
 ].join("\n")
-op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
-op.on("-g"    , "--global"    , "Globally substitute."){    OPTIONS[:global] = true}
+op.on("-o"    , "--overwrite"    , "Overwrite."){    options[:overwrite] = true}
+op.on("-g"    , "--global"    , "Globally substitute."){    options[:global] = true}
 op.parse!(ARGV)
 
-OLD_STR = ARGV.shift
-NEW_STR = ARGV.shift
+old_str = ARGV.shift
+new_str = ARGV.shift
 
-OPTIONS[:overwrite] ||= false
+options[:overwrite] ||= false
 
-Tefil.run(ARGV, OPTIONS[:overwrite])
+tf = Tefil::LineSubstituter.new(old_str, new_str, options)
+tf.run(ARGV)
