@@ -25,4 +25,4 @@ new_str = ARGV.shift
 options[:overwrite] ||= false
 
 tf = Tefil::LineSubstituter.new(old_str, new_str, options)
-tf.run(ARGV)
+tf.filter(ARGV)

@@ -10,17 +10,17 @@ require "rubygems"
 require "tefil.rb"
 
 ## option analysis
-OPTIONS = {}
+options = {}
 op = OptionParser.new
 op.banner = [
   "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
   "  E.g., echo '%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB' | packpercent" #サンプル
 ].join("\n")
-op.on("-o"    , "--overwrite"    , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.on("-o"    , "--overwrite"    , "Overwrite."){    options[:overwrite] = true}
 op.parse!(ARGV)
 
-OPTIONS[:overwrite] ||= false
-OPTIONS[:overwrite]
+options[:overwrite] ||= false
+options[:overwrite]
 
 tf = Tefil::PercentPacker.new(options)
 tf.filter(ARGV)
