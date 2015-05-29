@@ -2,7 +2,8 @@
 # coding: utf-8
 #
 #require "tefil"
-require "tempfile"
+#require "tempfile"
+#require "tmpdir"
 
 # Module that provide a framework for text filters.
 #
