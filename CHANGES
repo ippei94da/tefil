@@ -1,13 +1,17 @@
 = tefil changelog
 
-== Master (for 0.1.0)
+== Master (for 0.1.1)
+
+== Version 0.1.0 [2015-07-07] released
 * Add bin/packpercent .
 * Add usage banner.
 * Rename bin/formcolumn to columnform
 * Add bin/indentstat .
 * Add bin/indentconv .
-* module Tefil converted to class Tefil
-* delete require "tempfile" for Ruby 2.1
+* Module Tefil converted to class Tefil
+* Delete require "tempfile" for Ruby 2.1
+* Rewrite test to use capture_stdout
+* Remove Tefil::TextFilterBase.filter (class method)
 
 == Version 0.0.3 [2013-05-10] released
 * Rename TextFilter to Tefil

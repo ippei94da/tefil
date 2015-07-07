@@ -20,26 +20,26 @@ class TC_LineSubstituter < Test::Unit::TestCase
     $stdin.puts "abcdabcd"
     $stdin.puts "ABCDABCD"
     $stdin.rewind
-    $stdout = StringIO.new
-    @is00.filter([])
-    $stdout.rewind
-    t = $stdout.readlines
-    assert_equal("XYZdabcd\n", t.shift)
-    assert_equal("ABCDABCD\n", t.shift)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @is00.filter([])}
+    correct =
+      "XYZdabcd\n" +
+      "ABCDABCD\n"
+    assert_equal(correct, result)
+
 
     setup
     $stdin = StringIO.new
     $stdin.puts "abcdabcd"
     $stdin.puts "ABCDABCD"
     $stdin.rewind
-    $stdout = StringIO.new
-    @is01.filter([])
-    $stdout.rewind
-    t = $stdout.readlines
-    assert_equal("XYZdXYZd\n", t.shift)
-    assert_equal("ABCDABCD\n", t.shift)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @is01.filter([])}
+    correct =
+      "XYZdXYZd\n" +
+      "ABCDABCD\n"
+    assert_equal(correct, result)
+
   end
 end
 

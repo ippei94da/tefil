@@ -25,14 +25,13 @@ class TC_IndentStatistics < Test::Unit::TestCase
     $stdin.puts "  g"
     $stdin.puts "    h"
     $stdin.rewind
-    $stdout = StringIO.new
-    @is00.filter([])
-    $stdout.rewind
-    t = $stdout.readlines
-    assert_equal(" 0|*\n", t.shift)
-    assert_equal(" 2|***\n", t.shift)
-    assert_equal(" 4|****\n", t.shift)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @is00.filter([])}
+    correct =
+      " 0|*\n" +
+      " 2|***\n" +
+      " 4|****\n"
+    assert_equal(correct, result)
   end
 end
 

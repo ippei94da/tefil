@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'bundler'
+require "capture_stdout"
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e

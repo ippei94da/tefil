@@ -6,6 +6,7 @@
 require "pp"
 require "optparse"
 require "rubygems"
+require "tempfile"
 #gem "tefil"
 require "tefil.rb"
 

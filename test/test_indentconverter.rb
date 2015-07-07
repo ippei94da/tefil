@@ -23,17 +23,22 @@ class TC_IndentConverter < Test::Unit::TestCase
     $stdin.puts "    e"
     $stdin.puts "    f"
     $stdin.rewind
-    $stdout = StringIO.new
-    @ic00.filter([])
-    $stdout.rewind
-    t = $stdout.readlines
-    assert_equal("a\n", t.shift)
-    assert_equal("    b\n", t.shift)
-    assert_equal("        c\n", t.shift)
-    assert_equal("    d\n", t.shift)
-    assert_equal("        e\n", t.shift)
-    assert_equal("        f\n", t.shift)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @ic00.filter([])}
+    correct =
+      "a\n" +
+      "    b\n" +
+      "        c\n" + 
+      "    d\n" +     
+      "        e\n" + 
+      "        f\n"
+    assert_equal(correct, result)
   end
 end
+
+
+
+
+
+
 

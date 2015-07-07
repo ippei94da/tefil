@@ -55,22 +55,18 @@ class TestTefil < Test::Unit::TestCase
     $stdin.puts "abc"
     $stdin.puts "def"
     $stdin.rewind
-    $stdout = StringIO.new
-    @t00.filter([])
-    #pp $stdout
-    $stdout.rewind
-    output = $stdout.readlines
-    assert_equal([ "Abc\n", "def\n" ], output)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @t00.filter([])}
+    correct = "Abc\n" + "def\n"
+    assert_equal(correct, result)
 
     # 1 file-> stdout
     setup
-    $stdout = StringIO.new
-    @t00.filter([TMP00])
-    $stdout.rewind
-    output = $stdout.readlines
-    assert_equal(["Abc\n", "def\n"], output)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @t00.filter([TMP00])}
+    correct =
+    "Abc\n" + "def\n"
+    assert_equal(correct, result)
     tmp00 = File.open(TMP00, "r").readlines
     assert_equal(["abc\n", "def\n"], tmp00)
     tmp01 = File.open(TMP01, "r").readlines
@@ -78,13 +74,10 @@ class TestTefil < Test::Unit::TestCase
 
     # 2 files -> stdout
     setup
-    $stdout = StringIO.new
-    @t00.filter([TMP00, TMP01])
-    $stdout.rewind
-    output = $stdout.readlines
-    assert_equal(["Abc\n", "def\n", "Abc\n", "def\n", "cAb\n"],
-                 output)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @t00.filter([TMP00, TMP01])}
+    correct = "Abc\n" + "def\n" + "Abc\n" + "def\n" + "cAb\n"
+    assert_equal(correct, result)
     tmp00 = File.open(TMP00, "r").readlines
     assert_equal(["abc\n", "def\n"], tmp00)
     tmp01 = File.open(TMP01, "r").readlines
@@ -92,12 +85,10 @@ class TestTefil < Test::Unit::TestCase
 
     # smart_filename
     setup
-    $stdout = StringIO.new
-    @t02.filter([TMP00])
-    $stdout.rewind
-    output = $stdout.readlines
-    assert_equal(["Abc\n", "def\n"], output)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @t02.filter([TMP00])}
+    correct = "Abc\n" + "def\n"
+    assert_equal(correct, result)
     tmp00 = File.open(TMP00, "r").readlines
     assert_equal(["abc\n", "def\n"], tmp00)
     tmp01 = File.open(TMP01, "r").readlines
@@ -105,12 +96,10 @@ class TestTefil < Test::Unit::TestCase
 
     # smart_filename and overwrite # 2 files -> stdout
     setup
-    $stdout = StringIO.new
-    @t03.filter([TMP00, TMP01])
-    $stdout.rewind
-    stdout = $stdout.readlines
-    assert_equal([], stdout)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @t03.filter([TMP00, TMP01])}
+    correct = ""
+    assert_equal(correct, result)
     tmp = File.open(TMP00, "r").readlines
     assert_equal(["Abc\n", "def\n"], tmp)
     tmp = File.open(TMP01, "r").readlines
@@ -124,12 +113,10 @@ class TestTefil < Test::Unit::TestCase
   def test_filter_overwrite
     # 1 file-> stdout
     setup
-    $stdout = StringIO.new
-    @t01.filter([TMP00])
-    $stdout.rewind
-    tmp = $stdout.readlines
-    assert_equal([], tmp)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @t01.filter([TMP00])}
+    correct = ""
+    assert_equal(correct, result)
     tmp = File.open(TMP00, "r").readlines
     assert_equal(["Abc\n", "def\n"], tmp)
     tmp = File.open(TMP01, "r").readlines
@@ -137,12 +124,10 @@ class TestTefil < Test::Unit::TestCase
 
     # 2 files -> stdout
     setup
-    $stdout = StringIO.new
-    @t01.filter([TMP00, TMP01])
-    $stdout.rewind
-    stdout = $stdout.readlines
-    assert_equal([], stdout)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @t01.filter([TMP00, TMP01])}
+    correct = ""
+    assert_equal(correct, result)
     tmp = File.open(TMP00, "r").readlines
     assert_equal(["Abc\n", "def\n"], tmp)
     tmp = File.open(TMP01, "r").readlines
@@ -154,12 +139,15 @@ class TestTefil < Test::Unit::TestCase
 #    $stdin.puts "abc"
 #    $stdin.puts "def"
 #    $stdin.rewind
-#    $stdout = StringIO.new
-#    SampleFilter.filter([], true)
-#    $stdout.rewind
-#    t = $stdout.readlines
-#    assert_equal([ "Abc\n", "def\n" ], t)
-#    $stdout.close
+#    str = capture_stdout{}
+#    result = capture_stdout{ SampleFilter.filter([], true) }
+#    correct = "Abc\n" + "def\n"
+#    assert_equal(correct, result)
+#    tmp = File.open(TMP00, "r").readlines
+#    assert_equal(["Abc\n", "def\n"], tmp)
+#    tmp = File.open(TMP01, "r").readlines
+#    assert_equal(["Abc\n", "def\n", "cAb\n"], tmp)
+#
 #
 #    # 単数のファイルを指定。
 #    # overwrite なし。
@@ -188,8 +176,6 @@ class TestTefil < Test::Unit::TestCase
 #    assert_equal(["abc\n", "def\n"], tmp)
 #    tmp = File.open(TMP01, "r").readlines
 #    assert_equal(["abc\n", "def\n", "cab\n"], tmp)
-#
-#
 #  end
 
 end

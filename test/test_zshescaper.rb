@@ -18,12 +18,10 @@ class TC_ZshEscaper < Test::Unit::TestCase
     $stdin = StringIO.new
     $stdin.puts "abcdABCD * * *"
     $stdin.rewind
-    $stdout = StringIO.new
-    @is00.filter([])
-    $stdout.rewind
-    t = $stdout.readlines
-    assert_equal('abcdABCD\ \*\ \*\ \*' + "\n", t.shift)
-    $stdout.close
+    str = capture_stdout{}
+    result = capture_stdout{ @is00.filter([])}
+    correct = 'abcdABCD\ \*\ \*\ \*' + "\n"
+    assert_equal(correct, result)
   end
 end
 
