@@ -1,0 +1,6 @@
+After the loop is broken, a pair of nodes, comprising an OSS
+and its qe-OSS, is obtained; OSS $(s_4^{-}, s_2)$ and
+$(s_2, s_4)$ in Fig. \ref{fig1}.  Each of the OSSs can be
+elevated to $\vstart$ by using its stored data. An MEP that
+connects $\vstart$ and qe-OSS of $\vstart$
+
