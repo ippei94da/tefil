@@ -1,6 +1,7 @@
 = tefil changelog
 
 == Master (for 0.1.1)
+* Add bin/englishsentence
 
 == Version 0.1.0 [2015-07-07] released
 * Add bin/packpercent .

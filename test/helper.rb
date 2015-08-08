@@ -1,3 +1,4 @@
+require 'pp'
 require 'rubygems'
 require 'bundler'
 require "capture_stdout"
