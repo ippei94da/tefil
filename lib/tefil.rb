@@ -1,6 +1,8 @@
 #! /usr/bin/env ruby
 # coding: utf-8
 
+require 'tempfile'
+
 module Tefil; end
 require 'tefil/textfilterbase'
 
