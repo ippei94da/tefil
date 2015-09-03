@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
 # coding: utf-8
 
-# convert English text to English text with each line / each sentence.
+# convert to text with each line / each sentence.
 
 require "pp"
 require "optparse"
@@ -20,5 +20,5 @@ op.parse!(ARGV)
 
 options[:overwrite] ||= false
 
-is = Tefil::EnglishSentence.new options
+is = Tefil::EachSentence.new options
 is.filter(ARGV)

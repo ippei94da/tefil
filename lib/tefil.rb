@@ -12,5 +12,5 @@ require 'tefil/indentstatistics'
 require 'tefil/linesubstituter'
 require 'tefil/percentpacker'
 require 'tefil/zshescaper'
-require 'tefil/englishsentence.rb'
+require 'tefil/eachsentence.rb'
 
