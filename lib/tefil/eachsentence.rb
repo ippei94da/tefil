@@ -1,3 +1,4 @@
+# coding: utf-8
 class Tefil::EachSentence < Tefil::TextFilterBase
 
   END_CHAR = %w(. ? ． 。)

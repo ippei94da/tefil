@@ -13,7 +13,7 @@ require "tefil"
 options = {}
 op = OptionParser.new
 #op.banner = [
-#    "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+#  "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 #].join("\n")
 op.on("-o"     , "--overwrite"     , "Overwrite."){    options[:overwrite] = true}
 op.parse!(ARGV)

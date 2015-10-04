@@ -10,8 +10,8 @@ require "tefil"
 OPTIONS = {}
 op = OptionParser.new
 op.banner = [
-    "Usage: #{File.basename("#{__FILE__}")} old_width new_width [options] [files]",
-    "Example: #{File.basename("#{__FILE__}")} 4 2 [options] [files]",
+  "Usage: #{File.basename("#{__FILE__}")} old_width new_width [options] [files]",
+  "Example: #{File.basename("#{__FILE__}")} 4 2 [options] [files]",
 ].join("\n")
 op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
 #op.on("-m", "--minimum", "Show only minimum indent (not zero)."){ OPTIONS[:minimum] = true}

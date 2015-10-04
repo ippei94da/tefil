@@ -1,8 +1,5 @@
 #! /usr/bin/env ruby
 # coding: utf-8
-#
-# USAGE: formcolumn [options] files ...
-
 
 require "pp"
 require "optparse"
@@ -10,16 +7,16 @@ require "rubygems"
 require "tefil"
 
 # option analysis
-OPTIONS = {:separator => ' '}
+OPTIONS = {}
 op = OptionParser.new
 op.banner = [
+  "Simply convert FreeStyleWiki to Markdown.",
   "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+  "Example: #{File.basename("#{__FILE__}")} index.wiki > index.md",
 ].join("\n")
 op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
-op.on("-s char", "--separator=char", "Indicate separator."){|val| OPTIONS[:separator] = val}
-op.on("-l"     , "--left-alline"   , "Left alline."){ OPTIONS[:left] = true}
 op.parse!(ARGV)
 
-OPTIONS[:overwrite] ||= false
 
-Tefil::ColumnFormer.new(OPTIONS).filter(ARGV)
+f = Tefil::FswikiToMd.new(OPTIONS)
+f.filter(ARGV)
