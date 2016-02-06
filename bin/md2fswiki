@@ -1,0 +1,22 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+
+require "pp"
+require "optparse"
+require "rubygems"
+require "tefil"
+
+# option analysis
+OPTIONS = {}
+op = OptionParser.new
+op.banner = [
+  "Simply convert Markdown to FreeStyleWiki.",
+  "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+  "Example: #{File.basename("#{__FILE__}")} index.wiki > index.md",
+].join("\n")
+op.on("-o"     , "--overwrite"     , "Overwrite."){    OPTIONS[:overwrite] = true}
+op.parse!(ARGV)
+
+
+f = Tefil::MdToFswiki.new(OPTIONS)
+f.filter(ARGV)
