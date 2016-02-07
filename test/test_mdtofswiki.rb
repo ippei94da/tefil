@@ -14,8 +14,8 @@ class TC_MdToFswiki < Test::Unit::TestCase
   end
 
   def test_process_stream
-    pp "##aho".sub!(/^\#\#\#/  , '')
-    exit
+    #pp "##aho".sub!(/^\#\#\#/  , '')
+    #exit
 
     [
       [ "# head1"                           , "!!! head1"                         ],
@@ -38,7 +38,7 @@ class TC_MdToFswiki < Test::Unit::TestCase
       [ "[Google](http://www.google.co.jp/)", "[Google|http://www.google.co.jp/]" ],
       [ "    formatted text"                , " formatted text"                   ],
       [ "---"                               , "----"                              ],
-      [ "<!-- comment-->"                   , "// comment"                        ],
+      #[ "<!-- comment-->"                   , "// comment"                        ],
     ].each do |i|
       $stdin = StringIO.new
       $stdin.puts i[0]
