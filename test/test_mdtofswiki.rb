@@ -14,6 +14,9 @@ class TC_MdToFswiki < Test::Unit::TestCase
   end
 
   def test_process_stream
+    pp "##aho".sub!(/^\#\#\#/  , '')
+    exit
+
     [
       [ "# head1"                           , "!!! head1"                         ],
       [ "## head2"                          , "!! head2"                          ],
