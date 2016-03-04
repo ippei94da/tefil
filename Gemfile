@@ -11,6 +11,6 @@ group :development do
   gem "bundler", "~> 1.11"
   gem "jeweler", "~> 2.0"
   gem "simplecov", "~> 0.11"
-  gem "capture_stdout", "~> 0.0.1"
-  gem "builtinextension", ">= 0.1.4"
+  gem "capture_stdout", "~> 0.0"
+  gem "builtinextension", ">= 0.1"
 end
