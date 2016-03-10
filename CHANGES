@@ -1,6 +1,8 @@
 = tefil changelog
 
-== Master (for 0.1.1)
+== Master (for 0.1.2)
+
+== Version 0.1.1 [2016-03-11] released
 * Add bin/eachsentence
 * Add bin/fswiki2md
 * Add bin/md2fswiki
