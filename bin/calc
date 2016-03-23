@@ -18,6 +18,7 @@ op.banner = [
 op.on("-o"    , "--overwrite"    , "Overwrite."){    options[:overwrite] = true}
 op.on("-g"    , "--global"    , "Globally substitute."){    options[:global] = true}
 op.on("-p"    , "--preserve"    , "Preserve equation with '='."){ options[:preserve] = true}
+op.on("-r"    , "--ruby"    , "Use Ruby 'eval' in spite of 'bc -l', powerful but security weakness."){ options[:ruby] = true} #Math::PI や実数乗ができる。
 op.parse!(ARGV)
 
 options[:overwrite] ||= false

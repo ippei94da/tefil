@@ -8,29 +8,37 @@ require 'pp'
 class Tefil::Calculator < Tefil::TextFilterBase
   def initialize(options = {})
     @preserve = true if options[:preserve]
+    @ruby = true if options[:ruby]
     super(options)
   end
 
   def process_stream(in_io, out_io)
+    #pp @ruby
     in_io.each do |line|
-      #method = :sub
-      #method = :gsub if @global
-      #out_io.puts line.send(method, @old_str, @new_str)
       eq = line.chomp
-      #pp eq
 
-      eq.gsub!(/\{/, '\(' )
-      eq.gsub!(/\}/, '\)' )
-      eq.gsub!(/\\times/, '\*' )
-      #if /\frac\{(.*)\}\{(.*)\}/ =~ eq
-      #  eq. if /\frac\{(.*)\}\{(.*)\}/ =~ eq
-      #end
-      #pp eq
+      eq.gsub!(/\{/, '(' )
+      eq.gsub!(/\}/, ')' )
+      eq.gsub!(/\\times/, '*' )
 
-      result = `echo  #{eq} | bc -l`.chomp
-      result.sub!(/^\./, '0.')
-      result.sub!(/^-\./, '-0.')
-      result.sub!(/^0$/, '0.0')
+      if @ruby
+        eq.gsub!(/\^/, '**' )
+        eq.gsub!(/sqrt/, 'Math::sqrt' )
+        eq.gsub!(/log\(/, 'Math::log(' )
+        eq.gsub!(/l\(/, 'Math::log(' )
+        eq.gsub!(/exp\(/, 'Math::exp(' )
+        eq.gsub!(/e\(/, 'Math::exp(' )
+        result = eval(eq)
+      else
+        eq.gsub!(/\(/, '\(' )
+        eq.gsub!(/\)/, '\)' )
+        eq.gsub!(/\*/, '\*' )
+
+        result = `echo  #{eq} | bc -l`.chomp
+        result.sub!(/^\./, '0.')
+        result.sub!(/^-\./, '-0.')
+        result.sub!(/^0$/, '0.0')
+      end
 
       out_io.print line.chomp + " = " if @preserve
       out_io.puts result
