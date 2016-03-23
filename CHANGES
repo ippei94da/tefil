@@ -1,6 +1,7 @@
 = tefil changelog
 
 == Master (for 0.1.2)
+* Add bin/calc
 
 == Version 0.1.1 [2016-03-11] released
 * Add bin/eachsentence

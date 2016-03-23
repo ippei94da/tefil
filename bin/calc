@@ -1,0 +1,26 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+#
+# USAGE: calc [options] str0 str1 files ...
+
+require "pp"
+require "optparse"
+#require "rubygems"
+#require "tempfile"
+require "tefil"
+
+## option analysis
+options = {}
+op = OptionParser.new
+op.banner = [
+  "Usage: #{File.basename("#{__FILE__}")} old_str new_str [options] [files]",
+].join("\n")
+op.on("-o"    , "--overwrite"    , "Overwrite."){    options[:overwrite] = true}
+op.on("-g"    , "--global"    , "Globally substitute."){    options[:global] = true}
+op.on("-p"    , "--preserve"    , "Preserve equation with '='."){ options[:preserve] = true}
+op.parse!(ARGV)
+
+options[:overwrite] ||= false
+
+tf = Tefil::Calculator.new(options)
+tf.filter(ARGV)

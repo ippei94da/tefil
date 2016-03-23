@@ -6,6 +6,7 @@ require 'tempfile'
 module Tefil; end
 require 'tefil/textfilterbase'
 
+require 'tefil/calculator.rb'
 require 'tefil/columnformer'
 require 'tefil/indentconverter'
 require 'tefil/indentstatistics'
