@@ -1,6 +1,8 @@
 = tefil changelog
 
-== Master (for 0.1.2)
+== Master (for 0.1.3)
+
+== Version 0.1.2 [2016-04-27] released
 * Add bin/calc
 * Add 'bin/linesub --regexp' option
 * Adjust to Ruby2.3
