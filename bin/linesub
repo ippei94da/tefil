@@ -14,10 +14,11 @@ require "tefil.rb"
 options = {}
 op = OptionParser.new
 op.banner = [
-  "Usage: #{File.basename("#{__FILE__}")} old_str new_str [options] [files]",
+  "Usage: #{File.basename("#{__FILE__}")} [options] old_str new_str [files]",
 ].join("\n")
-op.on("-o"    , "--overwrite"    , "Overwrite."){    options[:overwrite] = true}
-op.on("-g"    , "--global"    , "Globally substitute."){    options[:global] = true}
+op.on("-o"    , "--overwrite"    , "Overwrite"){    options[:overwrite] = true}
+op.on("-g"    , "--global"    , "Globally substitute"){    options[:global] = true}
+op.on("-r"    , "--reg-exp"    , "Regular expression for old_str"){ options[:regexp] = true}
 op.parse!(ARGV)
 
 old_str = ARGV.shift
