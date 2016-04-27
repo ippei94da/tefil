@@ -10,7 +10,7 @@ require "fileutils"
 
 class SampleFilter < Tefil::TextFilterBase
   def process_stream(in_file, out_file)
-    results = []
+    #results = []
     in_file.each do |line|
       out_file.puts line.sub('a', 'A')
     end

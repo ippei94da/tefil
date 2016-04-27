@@ -23,7 +23,7 @@ class TC_IndentConverter < Test::Unit::TestCase
     $stdin.puts "    e"
     $stdin.puts "    f"
     $stdin.rewind
-    str = capture_stdout{}
+    #str = capture_stdout{}
     result = capture_stdout{ @ic00.filter([])}
     correct =
       "a\n" +

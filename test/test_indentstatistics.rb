@@ -25,7 +25,7 @@ class TC_IndentStatistics < Test::Unit::TestCase
     $stdin.puts "  g"
     $stdin.puts "    h"
     $stdin.rewind
-    str = capture_stdout{}
+    #str = capture_stdout{}
     result = capture_stdout{ @is00.filter([])}
     correct =
       " 0|*\n" +

@@ -40,7 +40,7 @@ class TC_FswikiToMd < Test::Unit::TestCase
       $stdin = StringIO.new
       $stdin.puts i[0]
       $stdin.rewind
-      str = capture_stdout{}
+      #str = capture_stdout{}
       result = capture_stdout{ @f00.filter([])}
       correct = sprintf("#{i[1]}\n")
       assert_equal(correct, result)

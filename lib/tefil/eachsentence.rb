@@ -12,11 +12,11 @@ class Tefil::EachSentence < Tefil::TextFilterBase
 
   def process_stream(in_io, out_io)
     results = []
-    words = []
+    #words = []
     in_io.read.strip.split("\n").each do |line|
       new_line = ''
       #line.gsub!("\n", ' ')
-      line.chars do |char|
+      line.chars.each do |char|
         new_line += char
         new_line += "\n" if (END_CHAR.include?(char))
       end

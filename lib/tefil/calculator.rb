@@ -7,13 +7,13 @@ require 'pp'
 
 class Tefil::Calculator < Tefil::TextFilterBase
   def initialize(options = {})
-    @preserve = true if options[:preserve]
-    @ruby = true if options[:ruby]
+    @options = options
+    @preserve = options[:preserve]
+    @ruby = options[:ruby]
     super(options)
   end
 
   def process_stream(in_io, out_io)
-    #pp @ruby
     in_io.each do |line|
       eq = line.chomp
 
