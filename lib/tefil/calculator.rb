@@ -4,7 +4,6 @@
 require 'pp'
 
 
-
 class Tefil::Calculator < Tefil::TextFilterBase
   def initialize(options = {})
     @options = options
