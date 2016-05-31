@@ -5,6 +5,7 @@
 
 require "pp"
 require "optparse"
+require "stringio"
 #require "rubygems"
 #require "tempfile"
 require "tefil"
@@ -24,4 +25,14 @@ op.parse!(ARGV)
 options[:overwrite] ||= false
 
 tf = Tefil::Calculator.new(options)
-tf.filter(ARGV)
+if ARGV.empty?
+  tf.filter(ARGV)
+else
+  ## for command line argument
+  io = StringIO.new
+  ARGV.each do |str|
+    io.puts str
+  end
+  io.rewind
+  tf.process_stream(io, $stdout)
+end

@@ -62,6 +62,5 @@ class TC_Calculator < Test::Unit::TestCase
   #  assert_equal(correct, result)
   #end
 
-
 end
 
