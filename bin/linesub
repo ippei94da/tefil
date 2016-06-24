@@ -19,12 +19,17 @@ op.banner = [
 op.on("-o"    , "--overwrite"    , "Overwrite"){    options[:overwrite] = true}
 op.on("-g"    , "--global"    , "Globally substitute"){    options[:global] = true}
 op.on("-r"    , "--reg-exp"    , "Regular expression for old_str"){ options[:regexp] = true}
+op.on("-f"    , "--filename"    , "Rename filename at the same time"){ options[:filename] = true}
 op.parse!(ARGV)
 
 old_str = ARGV.shift
 new_str = ARGV.shift
 
 options[:overwrite] ||= false
+
+#if options[:filename]
+#  if FileTest.exist? new_str
+#end
 
 tf = Tefil::LineSubstituter.new(old_str, new_str, options)
 tf.filter(ARGV)
