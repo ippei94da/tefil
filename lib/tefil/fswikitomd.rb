@@ -39,19 +39,19 @@ class Tefil::FswikiToMd < Tefil::TextFilterBase
       end
 
       case
-      when type == :head1   then line.sub!(/^/, "#"           )
-      when type == :head2   then line.sub!(/^/, "##"          )
-      when type == :head3   then line.sub!(/^/, "###"         )
-      when type == :item4   then line.sub!(/^/, "      *"     )
-      when type == :item3   then line.sub!(/^/, "    *"       )
-      when type == :item2   then line.sub!(/^/, "  *"         )
-      when type == :item1   then line.sub!(/^/, "*"           )
-      when type == :enum4   then line.sub!(/^/, "      0."    )
-      when type == :enum3   then line.sub!(/^/, "    0."      )
-      when type == :enum2   then line.sub!(/^/, "  0."        )
-      when type == :enum1   then line.sub!(/^/, "0."          )
-      when type == :pre     then line.sub!(/^/, "    "        )
-      when type == :hline   then line.sub!(/^/, "---"         )
+      when type == :head1   then line.sub!(/^/, "#"              )
+      when type == :head2   then line.sub!(/^/, "##"             )
+      when type == :head3   then line.sub!(/^/, "###"            )
+      when type == :item4   then line.sub!(/^/, "            *"  )
+      when type == :item3   then line.sub!(/^/, "        *"      )
+      when type == :item2   then line.sub!(/^/, "    *"          )
+      when type == :item1   then line.sub!(/^/, "*"              )
+      when type == :enum4   then line.sub!(/^/, "            0.")
+      when type == :enum3   then line.sub!(/^/, "        0."    )
+      when type == :enum2   then line.sub!(/^/, "    0."        )
+      when type == :enum1   then line.sub!(/^/, "0."            )
+      when type == :pre     then line.sub!(/^/, "    "          )
+      when type == :hline   then line.sub!(/^/, "---"           )
       when type == :comment then line = "<!--#{line.chomp}-->"
       else # type == :pain  then  'do nothing'
       end
