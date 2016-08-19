@@ -4,6 +4,7 @@
 
 * indent width is modified to 2
 * fswiki2md: enumerate from '0.' to '1.'
+* add bin/statistics
 
 == Version 0.1.3 [2016-05-31] released
 * bin/calc can accept commandline argument

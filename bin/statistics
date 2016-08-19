@@ -1,0 +1,24 @@
+#! /usr/bin/env ruby
+# coding: utf-8
+
+require "pp"
+require "optparse"
+require "rubygems"
+require "tefil"
+
+
+# option analysis
+options = {}
+op = OptionParser.new
+#op.banner = [
+#  "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
+#].join("\n")
+op.on("-o"     , "--overwrite"     , "Overwrite."){    options[:overwrite] = true}
+op.parse!(ARGV)
+
+
+options[:overwrite] ||= false
+
+stat = Tefil::Statistics.new options
+stat.filter(ARGV)
+
