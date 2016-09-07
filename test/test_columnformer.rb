@@ -13,6 +13,8 @@ end
 class TC_ColumnFormer < Test::Unit::TestCase
   def setup
     @cf00 = Tefil::ColumnFormer.new
+    @cf01 = Tefil::ColumnFormer.new({:just => :right})
+    @cf02 = Tefil::ColumnFormer.new({:separator => ','})
   end
 
   def test_print_size
@@ -29,18 +31,24 @@ class TC_ColumnFormer < Test::Unit::TestCase
     ]
     @cf00.form(matrix, io)
     io.rewind
-    assert_equal("  a ab\nabc  a\n", io.read)
-
-    io = StringIO.new
-    @cf00.form(matrix, io, ",")
-    io.rewind
-    assert_equal("  a,ab\nabc, a\n", io.read)
-
-    io = StringIO.new
-    @cf00.form(matrix, io, " ", true )
-    io.rewind
     assert_equal("a   ab\nabc a\n", io.read)
+
+    io = StringIO.new
+    @cf00.form(matrix, io, 2)
     io.rewind
+    assert_equal("  a   ab\n  abc a\n", io.read)
+
+
+    io = StringIO.new
+    @cf01.form(matrix, io)
+    io.rewind
+    assert_equal("  a ab\nabc  a\n", io.read)
+    io.rewind
+
+    io = StringIO.new
+    @cf02.form(matrix, io)
+    io.rewind
+    assert_equal("a  ,ab\nabc,a\n", io.read)
 
     #####
     io = StringIO.new
@@ -50,7 +58,7 @@ class TC_ColumnFormer < Test::Unit::TestCase
     ]
     @cf00.form(matrix, io)
     io.rewind
-    assert_equal("   abc    def\nあいう えおか\n", io.read)
+    assert_equal("abc    def\nあいう えおか\n", io.read)
   end
 end
 
