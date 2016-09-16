@@ -63,6 +63,7 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
   def process_stream(in_io, out_io)
     space_width = []
     rows = in_io.readlines.map do |line|
+      #pp line
       line =~ /^(\s*)/
       space_width << $1.length
       line.strip.split(INPUT_SEPARATOR)

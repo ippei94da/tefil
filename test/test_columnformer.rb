@@ -59,6 +59,9 @@ class TC_ColumnFormer < Test::Unit::TestCase
     @cf00.form(matrix, io)
     io.rewind
     assert_equal("abc    def\nあいう えおか\n", io.read)
+
+    ####
+    
   end
 end
 
