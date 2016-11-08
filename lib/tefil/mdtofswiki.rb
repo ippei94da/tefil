@@ -18,10 +18,10 @@ class Tefil::MdToFswiki < Tefil::TextFilterBase
       when line.sub!(/^    \*/  , '') then type = :item3
       when line.sub!(/^  \*/    , '') then type = :item2
       when line.sub!(/^\*/      , '') then type = :item1
-      when line.sub!(/^      0./, '') then type = :enum4
-      when line.sub!(/^    0./  , '') then type = :enum3
-      when line.sub!(/^  0./    , '') then type = :enum2
-      when line.sub!(/^0./      , '') then type = :enum1
+      when line.sub!(/^      \d+./, '') then type = :enum4
+      when line.sub!(/^    \d+./  , '') then type = :enum3
+      when line.sub!(/^  \d+./    , '') then type = :enum2
+      when line.sub!(/^\d+./      , '') then type = :enum1
       when line.sub!(/^    /    , '') then type = :pre
       when line.sub!(/^---/     , '') then type = :hline
       else                                 type = :plain
