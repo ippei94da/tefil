@@ -23,6 +23,7 @@ class TC_Statistics < Test::Unit::TestCase
     #str = capture_stdout{}
     result = capture_stdout{ @s00.filter([])}
     correct =
+      "sample:             3\n" +
       "highest:            3.0\n" +
       "lowest:             1.0\n" +
       "sum:                6.0\n" +

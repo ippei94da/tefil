@@ -24,6 +24,7 @@ class Tefil::Statistics < Tefil::TextFilterBase
     #standard deviation
     standard_deviation = Math::sqrt(variance)
 
+    out_io.puts "sample:             #{data.size}\n"
     out_io.puts "highest:            #{data.max}\n"
     out_io.puts "lowest:             #{data.min}\n"
     out_io.puts "sum:                #{sum}"
