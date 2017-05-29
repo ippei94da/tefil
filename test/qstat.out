@@ -1,0 +1,18 @@
+job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
+-----------------------------------------------------------------------------------------------------------------
+ 292671 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd05.calc.atom                4        
+ 292672 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd12.calc.atom                4        
+ 292673 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd15.calc.atom                4        
+ 292674 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd07.calc.atom                4        
+ 292675 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd11.calc.atom                4        
+ 292676 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd13.calc.atom                4        
+ 292677 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd09.calc.atom                4        
+ 292678 0.25000 vaspdirall ippei        r     05/29/2017 13:55:27 Pd.q@Pd06.calc.atom                4        
+ 292679 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:51                                    4        
+ 292680 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:51                                    4        
+ 292681 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:52                                    4        
+ 292682 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:53                                    4        
+ 292683 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:53                                    4        
+ 292684 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:53                                    4        
+ 292685 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:54                                    4        
+ 292686 0.25000 vaspdirall ippei        qw    05/29/2017 13:54:55                                    4        
