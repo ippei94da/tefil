@@ -1,24 +1,24 @@
 #! /usr/bin/env ruby
 # coding: utf-8
 
-INPUT_SEPARATOR = /\s+/
+#INPUT_SEPARATOR = /\s+/
 
-class String
-  #http://www.techscore.com/blog/2012/12/25/
-  #def mb_ljust(width, padding=' ')
-  def left_just(width, padding=' ')
-    output_width = each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
-    padding_size = [0, width - output_width].max
-    self + padding * padding_size
-  end
-
-  #def mb_rjust(width, padding=' ')
-  def right_just(width, padding=' ')
-    output_width = each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
-    padding_size = [0, width - output_width].max
-    padding * padding_size + self
-  end
-end
+#class String
+#  #http://www.techscore.com/blog/2012/12/25/
+#  #def mb_ljust(width, padding=' ')
+#  def left_just(width, padding=' ')
+#    output_width = each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
+#    padding_size = [0, width - output_width].max
+#    self + padding * padding_size
+#  end
+#
+#  #def mb_rjust(width, padding=' ')
+#  def right_just(width, padding=' ')
+#    output_width = each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
+#    padding_size = [0, width - output_width].max
+#    padding * padding_size + self
+#  end
+#end
 
 
 #

@@ -8,6 +8,8 @@
 * bin/columnform, left-justified is as default
 * bin/columnform, preserve indent
 
+* add bin/columnanalyze
+
 == Version 0.1.3 [2016-05-31] released
 * bin/calc can accept commandline argument
 

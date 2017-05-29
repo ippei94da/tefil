@@ -8,6 +8,7 @@ require 'tefil/textfilterbase'
 
 require 'tefil/calculator.rb'
 require 'tefil/columnformer'
+require 'tefil/columnanalyzer'
 require 'tefil/indentconverter'
 require 'tefil/indentstatistics'
 require 'tefil/statistics'
