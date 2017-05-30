@@ -7,7 +7,7 @@ require "helper"
 require "stringio"
 
 class Tefil::ColumnAnalyzer
-  public :process_stream, :projection_ary
+  public :process_stream, :projection_ary, :regions
 end
 
 class TC_ColumnAnalyzer < Test::Unit::TestCase
@@ -32,6 +32,21 @@ class TC_ColumnAnalyzer < Test::Unit::TestCase
                 true, true, true, true]
     assert_equal(corrects, results)
   end
+
+  def test_regions
+    results = @c00.regions([true, true, true, true, false,
+                            true, true, false,
+                            true, true, true, true]
+                          )
+    corrects = [
+      [0,3],
+      [5,6],
+      [8,11],
+    ]
+    assert_equal(corrects, results)
+
+  end
+
 
   def test_process_stream
     in_io = StringIO.new

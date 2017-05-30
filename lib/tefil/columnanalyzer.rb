@@ -38,14 +38,21 @@ class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
     lines = in_io.readlines
     projection_ary(lines)
 
+    
+
 
 
 
   end
 
-  #def print_size(string)
-  #  string.each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
-  #end
+  # true の範囲を示す二重配列を返す。
+  # 各要素は[始点, 終点] の各インデックス。
+  def regions(ary)
+    last = false
+    ary.size.times do |i|
+    end
+  end
+
 
   # 全ての文字列の最大長を要素数とする配列で、
   # 空白文字以外があれば true, 全て空白文字ならば false にした配列。
