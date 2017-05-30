@@ -13,14 +13,14 @@ op = OptionParser.new
 op.banner = [
   "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 ].join("\n")
-op.on("-o"     , "--overwrite"     , "Overwrite"){    OPTIONS[:overwrite] = true}
-op.on("-s char", "--separator=char", "Indicate separator"){|val| OPTIONS[:separator] = val}
-op.on("-l"     , "--left-just"   , "Left justified (Default)" ){ OPTIONS[:just] = :left}
-op.on("-r"     , "--right-just"  , "Right justified"){ OPTIONS[:just] = :right}
+#op.on("-o"     , "--overwrite"     , "Overwrite"){    OPTIONS[:overwrite] = true}
+#op.on("-s char", "--separator=char", "Indicate separator"){|val| OPTIONS[:separator] = val}
+#op.on("-l"     , "--left-just"   , "Left justified (Default)" ){ OPTIONS[:just] = :left}
+#op.on("-r"     , "--right-just"  , "Right justified"){ OPTIONS[:just] = :right}
 op.parse!(ARGV)
 
 ## default settings
-OPTIONS[:overwrite] ||= false
-OPTIONS[:just] ||= :left
+#OPTIONS[:overwrite] ||= false
+#OPTIONS[:just] ||= :left
 
 Tefil::ColumnAnalyzer.new(OPTIONS).filter(ARGV)

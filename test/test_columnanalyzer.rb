@@ -7,61 +7,44 @@ require "helper"
 require "stringio"
 
 class Tefil::ColumnAnalyzer
-  #public :analyze, :print_size
+  public :process_stream, :projection_ary
 end
 
 class TC_ColumnAnalyzer < Test::Unit::TestCase
+
+  TEXT = [
+    '0123 45 6789',
+    'abcd ef ghij',
+    'a    e  g   ',
+    'a cd  f gh j',
+    'abcd        ',
+    '         hij',
+  ]
+
   def setup
     @c00 = Tefil::ColumnAnalyzer.new
-  #  @c01 = Tefil::ColumnAnalyzer.new({:just => :right})
-  #  @c02 = Tefil::ColumnAnalyzer.new({:separator => ','})
   end
 
-  #def test_print_size
-  #  assert_equal(2, @c00.print_size('ab'))
-  #  assert_equal(4, @c00.print_size('あい'))
-  #  assert_equal(6, @c00.print_size('abあい'))
-  #end
+  def test_projection_ary
+    results = @c00.projection_ary(TEXT)
+    corrects = [true, true, true, true, false,
+                true, true, false,
+                true, true, true, true]
+    assert_equal(corrects, results)
+  end
 
-  #def test_analyze
-  #  io = StringIO.new
-  #  matrix = [
-  #    ["a", "ab"],
-  #    ["abc", "a"],
-  #  ]
-  #  @c00.analyze(matrix, io)
-  #  io.rewind
-  #  assert_equal("a   ab\nabc a\n", io.read)
-
-  #  io = StringIO.new
-  #  @c00.analyze(matrix, io, 2)
-  #  io.rewind
-  #  assert_equal("  a   ab\n  abc a\n", io.read)
-
-
-  #  io = StringIO.new
-  #  @c01.analyze(matrix, io)
-  #  io.rewind
-  #  assert_equal("  a ab\nabc  a\n", io.read)
-  #  io.rewind
-
-  #  io = StringIO.new
-  #  @c02.analyze(matrix, io)
-  #  io.rewind
-  #  assert_equal("a  ,ab\nabc,a\n", io.read)
-
-  #  #####
-  #  io = StringIO.new
-  #  matrix = [
-  #    ["abc", "def"],
-  #    ["あいう", "えおか"],
-  #  ]
-  #  @c00.analyze(matrix, io)
-  #  io.rewind
-  #  assert_equal("abc    def\nあいう えおか\n", io.read)
-
-  #  ####
-  #  
-  #end
+  def test_process_stream
+    in_io = StringIO.new
+    in_io.puts '0123 45 6789'
+    in_io.puts 'abcd ef ghij'
+    in_io.puts 'a    e  g   '
+    in_io.puts 'a cd  f gh j'
+    in_io.puts 'abcd        '
+    in_io.puts '         hij'
+    in_io.rewind
+    out_io = StringIO.new
+    @c00.process_stream(in_io, out_io)
+    #assert_equal
+  end
 end
 

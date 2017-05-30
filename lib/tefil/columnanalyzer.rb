@@ -27,52 +27,44 @@
 class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
 
   #def initialize(options = {})
-  #  @just = options[:just] || :left
   #  @separator = options[:separator] || ' '
   #  super(options)
   #end
 
-  #def analyze(matrix, io = $stdout, indent = 0)
-  #  #Obtain max length for each column.
-  #  max_lengths = []
-  #  matrix.each do |row|
-  #    row.each_with_index do |item, index|
-  #      item = item.to_s
-  #      max_lengths[index] ||= 0
-  #      size = print_size(item)
-  #      max_lengths[index] = size if max_lengths[index] < size
-  #    end
-  #  end
 
-  #  #Output
-  #  matrix.each do |row|
-  #    new_items = []
-  #    row.each_with_index do |item, index|
-  #      method = (@just.to_s + "_just").to_sym
-  #      new_items[index] = item.send(method, max_lengths[index])
-  #    end
-  #    io.print(" " * indent)
-  #    io.puts new_items.join(@separator).sub(/ +$/, "")
-  #  end
-  #end
+  private
+
+  def process_stream(in_io, out_io)
+    lines = in_io.readlines
+    projection_ary(lines)
 
 
-  #private
 
-  #def process_stream(in_io, out_io)
-  #  space_width = []
-  #  rows = in_io.readlines.map do |line|
-  #    #pp line
-  #    line =~ /^(\s*)/
-  #    space_width << $1.length
-  #    line.strip.split(INPUT_SEPARATOR)
-  #  end
-  #  analyze(rows, out_io, space_width.min)
-  #end
+
+  end
 
   #def print_size(string)
   #  string.each_char.map{|c| c.bytesize == 1 ? 1 : 2}.reduce(0, &:+)
   #end
+
+  # 全ての文字列の最大長を要素数とする配列で、
+  # 空白文字以外があれば true, 全て空白文字ならば false にした配列。
+  def projection_ary(lines)
+    max_length = lines.max_by{|line| line.size}.size
+    results = Array.new(max_length).fill(false)
+    lines.each do |line|
+      line.chomp.size.times do |i|
+        c = line[i]
+        next if results[i] == true
+        if c == ' '
+          next
+        else
+          results[i] = true
+        end
+      end
+    end
+    results
+  end
 
 end
 

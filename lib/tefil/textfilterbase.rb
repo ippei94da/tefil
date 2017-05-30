@@ -53,7 +53,7 @@ class Tefil::TextFilterBase
   #end
 
   #line ごとのファイル名表示はここでは提供せず、したければ process_stream で作る。
-  #grep のように行数を表示するなど、複雑な表示をすることもありうる。
+  #grep の行数表示のように、複雑な表示をすることもありうる。
   def filter(filenames)
     @num_files = filenames.size
     input_io = $stdin
