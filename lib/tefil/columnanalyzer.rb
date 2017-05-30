@@ -42,11 +42,16 @@ class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
       ranges.map { |range| line[range] }
     end
 
-    pp items_list
-
-
-
-
+    out_io.puts "#{lines.size} lines"
+    ranges.size.times do |i|
+      out_io.print "column #{i}:"
+      out_io.printf( "types: %d, ",
+       items_list.map {|items| items[i]}.sort.uniq.size
+      )
+      pp lines
+      out_io.printf( "head: %s", lines[0][ranges[i]])
+      out_io.puts
+    end
   end
 
   # true の範囲を示す二重配列を返す。

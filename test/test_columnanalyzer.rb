@@ -55,6 +55,8 @@ class TC_ColumnAnalyzer < Test::Unit::TestCase
     in_io.rewind
     out_io = StringIO.new
     @c00.process_stream(in_io, out_io)
+    out_io.rewind
+    pp out_io.readlines
     #assert_equal
   end
 end
