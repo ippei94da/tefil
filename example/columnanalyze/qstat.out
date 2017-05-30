@@ -1,0 +1,79 @@
+job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
+-----------------------------------------------------------------------------------------------------------------
+ 205712 0.75000 vasp-all.q alice        r     05/11/2017 15:37:12 Tc.q@Tc18.calc.atom                4        
+ 205714 0.75000 vasp-all.q alice        r     05/11/2017 15:37:12 Tc.q@Tc19.calc.atom                4        
+ 269156 0.40572 vasp-Tc.qs bob          r     05/30/2017 02:43:57 Tc.q@Tc05.calc.atom                4        
+ 269159 0.40572 vasp-Tc.qs bob          r     05/30/2017 03:47:12 Tc.q@Tc02.calc.atom                4        
+ 269161 0.40572 vasp-Tc.qs bob          r     05/30/2017 10:01:27 Tc.q@Tc06.calc.atom                4        
+ 269162 0.40572 vasp-Tc.qs bob          r     05/30/2017 10:52:12 Tc.q@Tc07.calc.atom                4        
+ 288849 0.27477 vasp-PdTci alice        r     05/30/2017 11:55:27 Ge.q@Ge07.calc.atom                4        
+ 288850 0.27477 vasp-PdTci alice        r     05/30/2017 11:55:27 Ge.q@Ge05.calc.atom                4        
+ 288874 0.27477 vasp-PdTci alice        r     05/30/2017 11:58:42 Ge.q@Ge10.calc.atom                4        
+ 288875 0.27477 vasp-PdTci alice        r     05/30/2017 11:59:12 Sr.q@Sr17.calc.atom                4        
+ 288952 0.27477 vasp-PdTci alice        r     05/30/2017 12:17:12 Ru.q@Ru03.calc.atom                4        
+ 288953 0.27477 vasp-PdTci alice        r     05/30/2017 12:17:27 Ag.q@Ag03.calc.atom                4        
+ 288954 0.27477 vasp-PdTci alice        r     05/30/2017 12:17:27 In.q@In09.calc.atom                4        
+ 288955 0.27477 vasp-PdTci alice        r     05/30/2017 12:17:57 Ge.q@Ge09.calc.atom                4        
+ 288956 0.27477 vasp-PdTci alice        r     05/30/2017 12:18:12 Ru.q@Ru01.calc.atom                4        
+ 293923 0.25243 vasp-Pd.qs bob          r     05/30/2017 09:45:27 Pd.q@Pd12.calc.atom                4        
+ 293935 0.25081 vasp-Pd.qs bob          r     05/30/2017 11:18:42 Pd.q@Pd06.calc.atom                4        
+ 293936 0.25076 vasp-Pd.qs bob          r     05/30/2017 11:25:57 Pd.q@Pd09.calc.atom                4        
+ 293937 0.25068 vasp-Pd.qs bob          r     05/30/2017 11:26:57 Pd.q@Pd07.calc.atom                4        
+ 293938 0.25067 vasp-Pd.qs bob          r     05/30/2017 11:32:12 Pd.q@Pd05.calc.atom                4        
+ 293939 0.25066 vasp-Pd.qs bob          r     05/30/2017 11:33:27 Pd.q@Pd11.calc.atom                4        
+ 293940 0.25064 vasp-Pd.qs bob          r     05/30/2017 11:36:42 Pd.q@Pd13.calc.atom                4        
+ 293941 0.25064 vasp-Pd.qs bob          r     05/30/2017 11:37:57 Pd.q@Pd15.calc.atom                4        
+ 205988 0.66668 qsub.sh    charlie      Eqw   05/12/2017 15:33:10                                    4        
+ 205994 0.66668 qsub.sh    charlie      Eqw   05/12/2017 15:33:14                                    4        
+ 269299 0.38432 vasp-Tc.qs bob          qw    05/25/2017 10:26:16                                    4        
+ 269300 0.38430 vasp-Tc.qs bob          qw    05/25/2017 10:27:25                                    4        
+ 269301 0.38428 vasp-Tc.qs bob          qw    05/25/2017 10:28:36                                    4        
+ 269302 0.38426 vasp-Tc.qs bob          qw    05/25/2017 10:29:17                                    4        
+ 269314 0.38410 vasp-Tc.qs bob          qw    05/25/2017 10:38:05                                    4        
+ 269320 0.38354 vasp-Tc.qs bob          qw    05/25/2017 11:08:47                                    4        
+ 269321 0.38352 vasp-Tc.qs bob          qw    05/25/2017 11:09:36                                    4        
+ 288969 0.27477 vasp-PdTci alice        qw    05/29/2017 13:32:42                                    4        
+ 289174 0.27475 vasp-PdTci alice        qw    05/29/2017 13:33:25                                    4        
+ 289175 0.27475 vasp-PdTci alice        qw    05/29/2017 13:33:25                                    4        
+ 290791 0.27467 qsub.sh    charlie      qw    05/29/2017 13:38:15                                    4        
+ 290792 0.27467 vasp-PdTci alice        qw    05/29/2017 13:38:16                                    4        
+ 290813 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:18                                    4        
+ 290814 0.27466 qsub.sh    charlie      qw    05/29/2017 13:38:18                                    4        
+ 290815 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:18                                    4        
+ 290816 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:18                                    4        
+ 290919 0.27466 qsub.sh    charlie      qw    05/29/2017 13:38:31                                    4        
+ 290920 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:31                                    4        
+ 290921 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:31                                    4        
+ 290922 0.27466 qsub.sh    charlie      qw    05/29/2017 13:38:32                                    4        
+ 290923 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:32                                    4        
+ 290924 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:32                                    4        
+ 290925 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:32                                    4        
+ 290926 0.27466 qsub.sh    charlie      qw    05/29/2017 13:38:32                                    4        
+ 290927 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:32                                    4        
+ 290928 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:32                                    4        
+ 290929 0.27466 vasp-PdTci alice        qw    05/29/2017 13:38:32                                    4        
+ 291337 0.27464 vasp-PdTci alice        qw    05/29/2017 13:39:38                                    4        
+ 291338 0.27464 qsub.sh    charlie      qw    05/29/2017 13:39:38                                    4        
+ 291339 0.27464 vasp-PdTci alice        qw    05/29/2017 13:39:38                                    4        
+ 291340 0.27464 vasp-PdTci alice        qw    05/29/2017 13:39:39                                    4        
+ 291341 0.27464 vasp-PdTci alice        qw    05/29/2017 13:39:39                                    4        
+ 291342 0.27464 qsub.sh    charlie      qw    05/29/2017 13:39:39                                    4        
+ 291344 0.27464 vasp-PdTci alice        qw    05/29/2017 13:39:39                                    4        
+ 291345 0.27464 qsub.sh    charlie      qw    05/29/2017 13:39:39                                    4        
+ 291346 0.27464 vasp-PdTci alice        qw    05/29/2017 13:39:39                                    4        
+ 292639 0.27458 vasp-PdTci alice        qw    05/29/2017 13:43:10                                    4        
+ 292640 0.27458 vasp-PdTci alice        qw    05/29/2017 13:43:10                                    4        
+ 292644 0.27458 vasp-PdTci alice        qw    05/29/2017 13:43:10                                    4        
+ 292645 0.27458 vasp-PdTci alice        qw    05/29/2017 13:43:10                                    4        
+ 292646 0.27458 vasp-PdTci alice        qw    05/29/2017 13:43:10                                    4        
+ 293942 0.25063 vasp-Pd.qs bob          qw    05/30/2017 11:22:57                                    4        
+ 293943 0.25060 vasp-Pd.qs bob          qw    05/30/2017 11:24:33                                    4        
+ 293944 0.25059 vasp-Pd.qs bob          qw    05/30/2017 11:24:55                                    4        
+ 293945 0.25012 vaspgeomop dave         qw    05/30/2017 11:50:24                                    4        
+ 293946 0.25011 vaspgeomop dave         qw    05/30/2017 11:51:01                                    4        
+ 293947 0.25011 vaspgeomop dave         qw    05/30/2017 11:51:02                                    4        
+ 293948 0.25011 vaspgeomop dave         qw    05/30/2017 11:51:03                                    4        
+ 293949 0.25011 vaspgeomop dave         qw    05/30/2017 11:51:04                                    4        
+ 293950 0.25011 vaspgeomop dave         qw    05/30/2017 11:51:04                                    4        
+ 293951 0.25011 vaspgeomop dave         qw    05/30/2017 11:51:05                                    4        
+ 293952 0.25011 vaspgeomop dave         qw    05/30/2017 11:51:05                                    4        

@@ -1,0 +1,250 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0 119924  6048 ?        Ss    5月29   0:02 /sbin/init splash
+root         2  0.0  0.0      0     0 ?        S     5月29   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/0]
+root         7  0.0  0.0      0     0 ?        S     5月29   0:25 [rcu_sched]
+root         8  0.0  0.0      0     0 ?        S     5月29   0:00 [rcu_bh]
+root         9  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/0]
+root        10  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/0]
+root        11  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/1]
+root        12  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/1]
+root        13  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/1]
+root        16  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/2]
+root        17  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/2]
+root        18  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/2]
+root        21  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/3]
+root        22  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/3]
+root        23  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/3]
+root        26  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/4]
+root        27  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/4]
+root        28  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/4]
+root        31  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/5]
+root        32  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/5]
+root        33  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/5]
+root        36  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/6]
+root        37  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/6]
+root        38  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/6]
+root        41  0.0  0.0      0     0 ?        S     5月29   0:00 [watchdog/7]
+root        42  0.0  0.0      0     0 ?        S     5月29   0:00 [migration/7]
+root        43  0.0  0.0      0     0 ?        S     5月29   0:00 [ksoftirqd/7]
+root        46  0.0  0.0      0     0 ?        S     5月29   0:00 [kdevtmpfs]
+root        47  0.0  0.0      0     0 ?        S<    5月29   0:00 [netns]
+root        48  0.0  0.0      0     0 ?        S<    5月29   0:00 [perf]
+root        49  0.0  0.0      0     0 ?        S     5月29   0:00 [khungtaskd]
+root        50  0.0  0.0      0     0 ?        S<    5月29   0:00 [writeback]
+root        51  0.0  0.0      0     0 ?        SN    5月29   0:00 [ksmd]
+root        52  0.0  0.0      0     0 ?        SN    5月29   0:01 [khugepaged]
+root        53  0.0  0.0      0     0 ?        S<    5月29   0:00 [crypto]
+root        54  0.0  0.0      0     0 ?        S<    5月29   0:00 [kintegrityd]
+root        55  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        56  0.0  0.0      0     0 ?        S<    5月29   0:00 [kblockd]
+root        57  0.0  0.0      0     0 ?        S<    5月29   0:00 [ata_sff]
+root        58  0.0  0.0      0     0 ?        S<    5月29   0:00 [md]
+root        59  0.0  0.0      0     0 ?        S<    5月29   0:00 [devfreq_wq]
+root        63  0.1  0.0      0     0 ?        S     5月29   1:28 [kswapd0]
+root        64  0.0  0.0      0     0 ?        S<    5月29   0:00 [vmstat]
+root        65  0.0  0.0      0     0 ?        S     5月29   0:00 [fsnotify_mark]
+root        66  0.0  0.0      0     0 ?        S     5月29   0:00 [ecryptfs-kthrea]
+root        82  0.0  0.0      0     0 ?        S<    5月29   0:00 [kthrotld]
+root        83  0.0  0.0      0     0 ?        S<    5月29   0:00 [acpi_thermal_pm]
+root        84  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        85  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        86  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        87  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        88  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        89  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        90  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        91  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root        96  0.0  0.0      0     0 ?        S<    5月29   0:00 [ipv6_addrconf]
+root       110  0.0  0.0      0     0 ?        S<    5月29   0:00 [deferwq]
+root       111  0.0  0.0      0     0 ?        S<    5月29   0:00 [charger_manager]
+root       161  0.0  0.0      0     0 ?        S<    5月29   0:00 [kpsmoused]
+root       163  0.0  0.0      0     0 ?        S     5月29   0:00 [kworker/5:1]
+root       164  0.0  0.0      0     0 ?        S     5月29   0:00 [scsi_eh_0]
+root       165  0.0  0.0      0     0 ?        S<    5月29   0:00 [scsi_tmf_0]
+root       166  0.0  0.0      0     0 ?        S     5月29   0:00 [scsi_eh_1]
+root       167  0.0  0.0      0     0 ?        S<    5月29   0:00 [scsi_tmf_1]
+root       168  0.0  0.0      0     0 ?        S     5月29   0:00 [scsi_eh_2]
+root       169  0.0  0.0      0     0 ?        S<    5月29   0:00 [scsi_tmf_2]
+root       170  0.0  0.0      0     0 ?        S     5月29   0:00 [scsi_eh_3]
+root       171  0.0  0.0      0     0 ?        S<    5月29   0:00 [scsi_tmf_3]
+root       172  0.0  0.0      0     0 ?        S     5月29   0:00 [scsi_eh_4]
+root       173  0.0  0.0      0     0 ?        S<    5月29   0:00 [scsi_tmf_4]
+root       174  0.0  0.0      0     0 ?        S     5月29   0:00 [scsi_eh_5]
+root       175  0.0  0.0      0     0 ?        S<    5月29   0:00 [scsi_tmf_5]
+root       185  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root       186  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root       187  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root       188  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root       193  0.0  0.0      0     0 ?        S     5月29   0:00 [scsi_eh_6]
+root       194  0.0  0.0      0     0 ?        S<    5月29   0:00 [scsi_tmf_6]
+root       195  0.0  0.0      0     0 ?        S     5月29   0:00 [usb-storage]
+root       224  0.0  0.0      0     0 ?        S     5月29   0:01 [jbd2/sda2-8]
+root       225  0.0  0.0      0     0 ?        S<    5月29   0:00 [ext4-rsv-conver]
+root       238  0.0  0.0      0     0 ?        S<    5月29   0:00 [bioset]
+root       262  0.0  0.0      0     0 ?        S     5月29   0:00 [kauditd]
+root       266  0.0  0.1  51760 19300 ?        Ss    5月29   0:13 /lib/systemd/systemd-journald
+root       300  0.0  0.0      0     0 ?        S<    5月29   0:00 [rpciod]
+root       306  0.0  0.0  46780  5864 ?        Ss    5月29   0:00 /lib/systemd/systemd-udevd
+root       418  0.0  0.0      0     0 ?        S     5月29   0:00 [irq/37-mei_me]
+root       516  0.0  0.0      0     0 ?        S<    5月29   0:00 [kvm-irqfd-clean]
+root       670  0.0  0.0      0     0 ?        S     5月29   0:01 [jbd2/sdc-8]
+root       671  0.0  0.0      0     0 ?        S<    5月29   0:00 [ext4-rsv-conver]
+root       676  0.0  0.0      0     0 ?        S     5月29   0:00 [jbd2/sdb-8]
+root       678  0.0  0.0      0     0 ?        S<    5月29   0:00 [ext4-rsv-conver]
+root       679  0.0  0.0      0     0 ?        S     5月29   0:00 [jbd2/sdd-8]
+root       681  0.0  0.0      0     0 ?        S<    5月29   0:00 [ext4-rsv-conver]
+systemd+   778  0.0  0.0 102384  2564 ?        Ssl   5月29   0:00 /lib/systemd/systemd-timesyncd
+whoopsie   940  0.0  0.0 373980 12136 ?        Ssl   5月29   0:00 /usr/bin/whoopsie -f
+message+   941  0.0  0.0  43600  4628 ?        Ss    5月29   0:00 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+root      1051  0.0  0.0 168020  8536 ?        Ssl   5月29   0:05 /usr/sbin/thermald --no-daemon --dbus-enable
+root      1055  0.0  0.0 277876  8600 ?        Ssl   5月29   0:04 /usr/lib/accountsservice/accounts-daemon
+syslog    1059  0.0  0.0 262692  3784 ?        Ssl   5月29   0:05 /usr/sbin/rsyslogd -n
+root      1067  0.0  0.1 470160 24652 ?        Ssl   5月29   0:03 /usr/lib/snapd/snapd
+root      1072  0.0  0.1 450880 17516 ?        Ssl   5月29   0:00 /usr/sbin/NetworkManager --no-daemon
+root      1080  0.0  0.0  30592  2940 ?        Ss    5月29   0:00 /usr/sbin/cron -f
+root      1084  0.0  0.0  28640  3080 ?        Ss    5月29   0:00 /lib/systemd/systemd-logind
+avahi     1085  0.0  0.0  44912  3484 ?        Ss    5月29   0:00 avahi-daemon: running [Re.local]
+daemon    1087  0.0  0.0  26044  2224 ?        Ss    5月29   0:00 /usr/sbin/atd -f
+root      1090  0.0  0.0 337512  8452 ?        Ssl   5月29   0:00 /usr/sbin/ModemManager
+root      1093  0.0  0.0   4400  1292 ?        Ss    5月29   0:00 /usr/sbin/acpid
+avahi     1103  0.0  0.0  44788   344 ?        S     5月29   0:00 avahi-daemon: chroot helper
+root      1233  0.0  0.0 278688  9908 ?        Ssl   5月29   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root      1341  0.0  0.0  65520  6144 ?        Ss    5月29   0:02 /usr/sbin/sshd -D
+root      1391  0.0  0.0      0     0 ?        S<    5月29   0:00 [nfsiod]
+root      1406  0.0  0.0      0     0 ?        S     5月29   0:00 [nfsv4.0-svc]
+root      1557  0.0  0.0  19568  2236 ?        Ss    5月29   0:03 /usr/sbin/irqbalance --pid=/var/run/irqbalance.pid
+root      1559  0.0  0.0 350408  6292 ?        SLsl  5月29   0:00 /usr/sbin/lightdm
+dictd     1562  0.0  0.0  20084  2484 ?        Ss    5月29   0:00 dictd 1.12.1: 0/0
+root      1598  0.0  0.3 423024 59348 tty7     Ssl+  5月29   0:42 /usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root      1601  0.0  0.0  17524  1724 tty1     Ss+   5月29   0:00 /sbin/agetty --noclear tty1 linux
+root      1697  0.0  0.0  65408  4468 ?        Ss    5月29   0:00 /usr/lib/postfix/sbin/master
+postfix   1699  0.0  0.0  67640  4480 ?        S     5月29   0:00 qmgr -l -t unix -u
+root      1772  0.0  0.0 241588  5868 ?        Ss    5月29   0:01 /usr/sbin/nmbd -D
+root      1792  0.0  0.0 340020 15864 ?        Ss    5月29   0:00 /usr/sbin/smbd -D
+root      1796  0.0  0.0 331392  5700 ?        S     5月29   0:00 /usr/sbin/smbd -D
+root      1798  0.0  0.0 340020  7308 ?        S     5月29   0:00 /usr/sbin/smbd -D
+root      1800  0.0  0.0 230304  6524 ?        Sl    5月29   0:00 lightdm --session-child 12 19
+rtkit     1866  0.0  0.0 183544  2964 ?        SNsl  5月29   0:00 /usr/lib/rtkit/rtkit-daemon
+root      1870  0.0  0.0 348880  9692 ?        Ssl   5月29   0:00 /usr/lib/upower/upowerd
+colord    1901  0.0  0.0 303052 11100 ?        Ssl   5月29   0:00 /usr/lib/colord/colord
+alice     1934  0.0  0.0  45248  4556 ?        Ss    5月29   0:00 /lib/systemd/systemd --user
+alice     1935  0.0  0.0 145468  2224 ?        S     5月29   0:00 (sd-pam)
+alice     1943  0.0  0.0 126560 12716 ?        Ss    5月29   0:01 i3
+alice     2018  0.0  0.0  11140   320 ?        Ss    5月29   0:00 /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session /usr/bin/im-launch i3
+alice     2021  0.0  0.0  43600   376 ?        S     5月29   0:00 /usr/bin/dbus-launch --exit-with-session /usr/bin/im-launch i3
+alice     2022  0.0  0.0  42884  3292 ?        Ss    5月29   0:00 /usr/bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+alice     2031  0.0  0.1  92596 19164 ?        S     5月29   0:13 /usr/bin/uim-xim
+alice     2032  0.0  0.1 394272 30328 ?        Sl    5月29   0:03 uim-toolbar
+alice     2034  0.0  0.0  12816  1704 ?        S     5月29   0:00 /usr/lib/x86_64-linux-gnu/uim/uim-helper-server
+alice     2036  0.0  0.0   4508   784 ?        S     5月29   0:00 /bin/sh -c uim-toolbar-gtk3
+alice     2038  0.0  0.0   4508   744 ?        S     5月29   0:00 /bin/sh -c i3bar --bar_id=bar-0 --socket="/run/user/1000/i3/ipc-socket.1943"
+alice     2039  0.0  0.1 394220 30296 ?        Sl    5月29   0:02 uim-toolbar-gtk3
+alice     2040  0.0  0.0  86160 10128 ?        S     5月29   0:20 i3bar --bar_id=bar-0 --socket=/run/user/1000/i3/ipc-socket.1943
+alice     2041  0.0  0.0   4508   852 ?        S     5月29   0:00 /bin/sh -c i3status
+alice     2042  0.0  0.0  80664  4924 ?        S     5月29   0:21 i3status
+alice     2044  0.0  0.0 337996  5552 ?        Sl    5月29   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+alice     2049  0.0  0.0  42768  3356 ?        S     5月29   0:00 /usr/bin/dbus-daemon --config-file=/etc/at-spi2/accessibility.conf --nofork --print-address 3
+alice     2051  0.0  0.0 206864  7448 ?        Sl    5月29   0:00 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+alice     2057  0.0  0.0 276168  8160 ?        Sl    5月29   0:00 /usr/lib/gvfs/gvfsd
+alice     2062  0.0  0.0 341324  5332 ?        Sl    5月29   0:00 /usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+alice     2073  0.0  0.0   4508   844 ?        S     5月29   0:00 /bin/sh -c urxvt
+alice     2074  0.0  0.0  97128 13080 ?        S     5月29   0:01 urxvt
+alice     2075  0.0  0.0  83784  4172 ?        S     5月29   0:00 urxvt
+alice     2077  0.0  0.1 389652 23360 ?        Sl    5月29   0:01 /usr/lib/x86_64-linux-gnu/uim/uim-candwin-gtk
+alice     2078  0.0  0.0  53948 11632 pts/0    Ss+   5月29   0:00 zsh
+alice     2135  0.0  0.0   4508   844 ?        S     5月29   0:00 /bin/sh -c urxvt
+alice     2136  0.0  0.1 105260 16500 ?        S     5月29   0:00 urxvt
+alice     2137  0.0  0.0  83784  4124 ?        S     5月29   0:00 urxvt
+alice     2140  0.0  0.0  54088 11856 pts/1    Ss+   5月29   0:01 zsh
+alice     2198  0.0  0.0  63204  5380 ?        S     5月29   0:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+root      2472  0.0  0.1 352260 18316 ?        S     5月29   0:01 /usr/sbin/smbd -D
+alice     2639  0.1  0.0 133748  6008 ?        Ssl   5月29   1:36 synergyc 192.168.0.85
+root      4797  0.0  0.0  97496  6888 ?        Ss    5月29   0:00 sshd: alice [priv]
+alice     4903  0.0  0.0  97496  4532 ?        S     5月29   0:00 sshd: alice@pts/2
+alice     4904  0.0  0.0  49044 10584 pts/2    Ss+   5月29   0:00 -zsh
+alice     6696  0.0  0.3 575036 49792 pts/1    SNl   5月29   0:00 emacs -f lookup
+alice     6700  0.0  0.0  19912  1976 pts/7    SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/OALD_7
+alice     6701  0.0  0.0  19912  1924 pts/8    SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/READERS
+alice     6702  0.0  0.0  19916  1928 pts/9    SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/RPLUS
+alice     6703  0.0  0.0  19912  1896 pts/10   SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/kenkyusha/colloc
+alice     6704  0.0  0.0  19912  1924 pts/11   SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/LSD
+alice     6705  0.0  0.0  19912  1996 pts/12   SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/SSD_JP10
+alice     6706  0.0  0.0  20456  2932 pts/13   SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/Kojien03
+alice     6707  0.0  0.0  19912  2008 pts/14   SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/KANJIGEN
+alice     6708  0.0  0.0  19912  2004 pts/15   SNs+  5月29   0:00 /usr/bin/eblook -q -e euc-jp /home/alice/dict/wikipedia20120408
+root     13454  0.0  0.0      0     0 ?        S    03:28   0:00 [kworker/4:2]
+postfix  13890  0.0  0.0  67476  4424 ?        S    11:52   0:00 pickup -l -t unix -u -c
+root     14946  0.0  0.0      0     0 ?        S<   06:30   0:04 [kworker/5:1H]
+root     15295  0.0  0.0      0     0 ?        S<   07:11   0:01 [kworker/3:2H]
+root     15421  0.0  0.0      0     0 ?        S<   07:28   0:01 [kworker/3:0H]
+root     15542  0.0  0.0      0     0 ?        S    11:54   0:00 [kworker/u16:0]
+root     15647  0.0  0.0      0     0 ?        S    07:35   0:12 [kworker/2:2]
+root     15651  0.0  0.0 274816  8972 ?        Ssl  07:35   0:00 /usr/sbin/cups-browsed
+root     15653  0.0  0.0      0     0 ?        S    07:35   0:00 [kworker/5:2]
+root     15744  0.0  0.0      0     0 ?        S    07:35   0:00 [kworker/7:2]
+root     15870  0.0  0.0      0     0 ?        S    07:43   0:00 [kworker/6:1]
+root     16061  0.0  0.0      0     0 ?        S<   08:04   0:00 [kworker/0:0H]
+root     16364  0.0  0.0      0     0 ?        S<   11:55   0:00 [kworker/4:1H]
+root     16567  0.0  0.0      0     0 ?        S    08:44   0:00 [kworker/4:3]
+root     16706  0.0  0.0      0     0 ?        S    08:50   0:00 [kworker/7:1]
+root     16879  0.0  0.0      0     0 ?        S<   09:06   0:00 [kworker/4:0H]
+root     16885  0.0  0.0      0     0 ?        S    09:07   0:00 [kworker/1:2]
+root     17413  0.0  0.0      0     0 ?        S<   10:03   0:00 [kworker/6:0H]
+alice    17449  0.0  0.0   4508   748 ?        S    10:08   0:00 /bin/sh -c urxvt
+alice    17450  0.0  0.0  97040 12536 ?        S    10:08   0:00 urxvt
+alice    17451  0.0  0.0  83784  4068 ?        S    10:08   0:00 urxvt
+alice    17452  0.0  0.0  53648 11108 pts/3    Ss+  10:08   0:00 zsh
+root     17508  0.0  0.0      0     0 ?        S    10:10   0:00 [kworker/6:0]
+root     17552  0.0  0.0      0     0 ?        S<   10:15   0:01 [kworker/5:2H]
+root     17576  0.0  0.0      0     0 ?        S<   10:18   0:00 [kworker/1:1H]
+root     17681  0.0  0.0      0     0 ?        S    11:56   0:00 [kworker/3:1]
+root     17883  0.0  0.0      0     0 ?        S    10:51   0:00 [kworker/0:0]
+root     17949  0.2  0.0      0     0 ?        S<   11:00   0:10 [kworker/2:2H]
+root     17980  0.0  0.0      0     0 ?        S    11:04   0:01 [kworker/2:1]
+root     18011  0.0  0.0      0     0 ?        S<   11:08   0:00 [kworker/7:2H]
+root     18087  0.0  0.0      0     0 ?        S<   11:17   0:00 [kworker/7:1H]
+root     18130  0.0  0.0      0     0 ?        S<   11:23   0:00 [kworker/6:1H]
+root     18155  0.0  0.0      0     0 ?        S<   11:25   0:01 [kworker/2:0H]
+root     18156  0.0  0.0      0     0 ?        S<   11:25   0:00 [kworker/0:1H]
+root     18188  0.0  0.0      0     0 ?        S    11:30   0:00 [kworker/3:2]
+root     18238  0.0  0.0      0     0 ?        S    11:38   0:00 [kworker/u16:2]
+alice    18244  0.0  0.0   4508   792 ?        S    11:38   0:00 /bin/sh -c urxvt
+alice    18245  0.0  0.0  97076 12828 ?        S    11:38   0:00 urxvt
+alice    18246  0.0  0.0  83784  4252 ?        S    11:38   0:00 urxvt
+alice    18247  0.0  0.0  53508 11112 pts/4    Ss+  11:38   0:00 zsh
+alice    18286  0.0  0.0  97728 12664 pts/4    SN   11:39   0:00 urxvt
+alice    18287  0.0  0.0  83788  4072 pts/4    SN   11:39   0:00 urxvt
+alice    18288  0.0  0.0  53592 11240 pts/5    SNs  11:39   0:00 zsh
+alice    18352  0.0  0.1 177636 17232 pts/5    SN+  11:41   0:00 vim bin/columnanalyze lib/tefil/columnanalyzer.rb test/test_columnanalyzer.rb +vs
+root     18363  0.0  0.0      0     0 ?        S<   11:58   0:00 [kworker/1:0H]
+alice    18367  0.0  0.0   4508   844 ?        S    11:41   0:00 /bin/sh -c urxvt
+alice    18368  0.0  0.0  97124 12884 ?        S    11:41   0:00 urxvt
+alice    18369  0.0  0.0  83784  4088 ?        S    11:41   0:00 urxvt
+alice    18370  0.0  0.0  53644 11288 pts/6    Ss   11:41   0:00 zsh
+alice    18373  0.0  0.0   4508   756 ?        S    11:58   0:00 /bin/sh -c urxvt
+alice    18374  0.0  0.0  98008 13944 ?        S    11:58   0:00 urxvt
+alice    18375  0.0  0.0  83784  4112 ?        S    11:58   0:00 urxvt
+alice    18376  0.0  0.0  49060 10588 pts/17   Ss+  11:58   0:00 zsh
+root     18427  0.0  0.0      0     0 ?        S    11:43   0:00 [kworker/0:2]
+alice    18479  0.4  0.1 177988 17692 pts/6    S+   11:43   0:09 vim index.md
+root     18480  0.0  0.0      0     0 ?        S    12:09   0:00 [kworker/1:1]
+alice    18485  0.0  0.0   4508   844 ?        S    11:44   0:00 /bin/sh -c urxvt
+alice    18486  0.0  0.0  97124 12988 ?        S    11:44   0:00 urxvt
+alice    18487  0.0  0.0  83784  4064 ?        S    11:44   0:00 urxvt
+alice    18488  0.0  0.0  53640 11200 pts/16   Ss   11:44   0:00 zsh
+alice    18489  0.0  0.0   4508   804 ?        S    12:09   0:00 /bin/sh -c urxvt
+alice    18490  0.0  0.0  97036 12636 ?        S    12:09   0:00 urxvt
+alice    18491  0.0  0.0  83784  4060 ?        S    12:09   0:00 urxvt
+alice    18492  0.0  0.0  53628 11172 pts/18   Ss   12:09   0:00 zsh
+alice    18528  0.3  0.1 177520 16916 pts/16   S+   12:09   0:01 vim bin/calc lib/tefil/calculator.rb
+alice    18583  0.0  0.0   4508   840 ?        S    12:11   0:00 /bin/sh -c urxvt
+alice    18584  0.0  0.0  97036 12772 ?        S    12:11   0:00 urxvt
+alice    18585  0.0  0.0  83784  3988 ?        S    12:11   0:00 urxvt
+alice    18586  0.0  0.0  53620 11268 pts/19   Ss   12:11   0:00 zsh
+alice    18869  0.0  0.0  20092  3228 pts/19   S+   12:13   0:00 man bc
+alice    18880  0.0  0.0  11276  2560 pts/19   S+   12:13   0:00 less
+root     18958  0.0  0.0      0     0 ?        S    12:17   0:00 [kworker/u16:1]
+root     18962  0.1  0.0  96124  6664 ?        Ss   12:18   0:00 sshd: root [priv]
+sshd     18963  0.0  0.0  66864  3240 ?        S    12:18   0:00 sshd: root [net]
+alice    18964  0.0  0.0  38952  3252 pts/18   R+   12:18   0:00 ps auxw
