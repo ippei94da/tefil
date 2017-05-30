@@ -36,9 +36,13 @@ class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
 
   def process_stream(in_io, out_io)
     lines = in_io.readlines
-    projection_ary(lines)
+    ranges = get_ranges(projection_ary(lines))
 
-    
+    items_list = lines.map do |line|
+      ranges.map { |range| line[range] }
+    end
+
+    pp items_list
 
 
 
@@ -46,13 +50,26 @@ class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
   end
 
   # true の範囲を示す二重配列を返す。
-  # 各要素は[始点, 終点] の各インデックス。
-  def regions(ary)
-    last = false
-    ary.size.times do |i|
+  # 各要素は 始点..終点 の各インデックスで出来た範囲。
+  ## 各要素は[始点, 終点] の各インデックス。
+  def get_ranges(ary)
+    results = []
+    start = nil
+    prev = false
+    ary << false # for true in final item
+    ary.each_with_index do |cur, i|
+      if prev == false && cur == true
+        start = i
+        prev = cur
+      elsif prev == true && cur == false
+        results << (start..(i - 1))
+        prev = cur
+      else
+        next
+      end
     end
+    results
   end
-
 
   # 全ての文字列の最大長を要素数とする配列で、
   # 空白文字以外があれば true, 全て空白文字ならば false にした配列。
