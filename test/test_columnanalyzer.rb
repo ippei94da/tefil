@@ -45,6 +45,8 @@ class TC_ColumnAnalyzer < Test::Unit::TestCase
 
 
   def test_process_stream
+
+    c01 = Tefil::ColumnAnalyzer.new(['0=abcd'])
     in_io = StringIO.new
     in_io.puts '0123 45 6789'
     in_io.puts 'abcd ef ghij'
@@ -54,7 +56,7 @@ class TC_ColumnAnalyzer < Test::Unit::TestCase
     in_io.puts '         hij'
     in_io.rewind
     out_io = StringIO.new
-    @c00.process_stream(in_io, out_io)
+    c01.process_stream(in_io, out_io)
     out_io.rewind
     #pp out_io.readlines
     #assert_equal

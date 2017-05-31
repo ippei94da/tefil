@@ -31,42 +31,93 @@ class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
   #   ['1=str1', '2=str2']
   #   ['1=str1', '2']
   def initialize(keys = [])
-    @keys_values = {}
+    @nums_values = {}
     @keys = []
     keys.each do |str|
       if str.include? '='
         key, value = str.split('=')
-        @keys_values[key] = value
+        @nums_values[key.to_i-1] = value
       else
         @keys << str
       end
     end
-
     super({})
   end
-
 
   private
 
   def process_stream(in_io, out_io)
     lines = in_io.readlines
-    ranges = get_ranges(projection_ary(lines))
 
+    # delete line consist of one character 
+    lines.delete_if {|line| line.split.uniq.size == 1}
+
+    ranges = get_ranges(projection_ary(lines))
     items_list = lines.map do |line|
-      ranges.map { |range| line[range] }
+      ranges.map { |range| line[range].strip }
     end
 
-    pp items_list
-    #items_list.select! {|items|  }
+    # screen items
+    items_head = items_list[0]
+    items_list.select! do |items|
+      flag = true
+      @nums_values.each do |key, value|
+        if items[key] != value
+          flag = false
+          break
+        end
+      end
+      flag
+    end
 
-    out_io.puts "#{lines.size} lines"
-    ranges.size.times do |i|
-      out_io.print "column #{i}:"
-      out_io.printf( "types: %d, ",
-       items_list.map {|items| items[i]}.sort.uniq.size
-      )
-      out_io.printf( "head: %s", lines[0][ranges[i]])
+    # output head
+    results = []
+    results << (1..(items_head.size)).to_a.map{|v| v.to_s}
+    #pp items_list[0]
+    #pp items_head
+    #exit
+    results << items_head unless items_list[0] == items_head
+    results += items_list
+    Tefil::ColumnFormer.new.form(results, out_io)
+
+    out_io.puts
+    out_io.puts "All:       #{lines.size}"
+    out_io.print "Extracted: #{items_list.size}"
+    conditions = []
+    @nums_values.each do |key, val|
+      conditions << "#{key}=#{val}"
+    end
+    out_io.puts " (#{conditions.join(' ')})"
+    out_io.puts
+
+    if items_list.size != 0
+      results = []
+      results << %w(key head types)
+
+      ranges.each_with_index do |range, i|
+        results << [(i+1).to_s, lines[0][range].strip, 
+          items_list.map {|items| items[i]}.sort.uniq.size.to_s
+        ]
+      end
+
+      Tefil::ColumnFormer.new.form(results, out_io)
+    end
+
+    unless @keys.empty?
       out_io.puts
+      out_io.puts "key analysis"
+      @keys.each do |key|
+        out_io.puts "(key=#{key})"
+        values = items_list.map{|items| items[key.to_i-1]}
+        names = values.sort.uniq
+        results = []
+        names.each do |name|
+          results << [name, values.count(name).to_s]
+        end
+        results.sort_by!{|v| v[1].to_i}
+        Tefil::ColumnFormer.new.form(results, out_io)
+        out_io.puts
+      end
     end
   end
 

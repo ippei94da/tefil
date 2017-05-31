@@ -25,4 +25,4 @@ op.parse!(ARGV)
 #OPTIONS[:just] ||= :left
 
 #Tefil::ColumnAnalyzer.new(OPTIONS).filter(ARGV)
-Tefil::ColumnAnalyzer.new(ARGV).filter
+Tefil::ColumnAnalyzer.new(ARGV).filter([])
