@@ -26,10 +26,24 @@
 #
 class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
 
-  #def initialize(options = {})
-  #  @separator = options[:separator] || ' '
-  #  super(options)
-  #end
+  # keys should be array including keys or key=value items)  as like:
+  #   ['1', '2']
+  #   ['1=str1', '2=str2']
+  #   ['1=str1', '2']
+  def initialize(keys = [])
+    @keys_values = {}
+    @keys = []
+    keys.each do |str|
+      if str.include? '='
+        key, value = str.split('=')
+        @keys_values[key] = value
+      else
+        @keys << str
+      end
+    end
+
+    super({})
+  end
 
 
   private
@@ -42,13 +56,15 @@ class Tefil::ColumnAnalyzer < Tefil::TextFilterBase
       ranges.map { |range| line[range] }
     end
 
+    pp items_list
+    #items_list.select! {|items|  }
+
     out_io.puts "#{lines.size} lines"
     ranges.size.times do |i|
       out_io.print "column #{i}:"
       out_io.printf( "types: %d, ",
        items_list.map {|items| items[i]}.sort.uniq.size
       )
-      pp lines
       out_io.printf( "head: %s", lines[0][ranges[i]])
       out_io.puts
     end
