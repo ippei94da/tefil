@@ -58,6 +58,16 @@ class Tefil::FswikiToMd < Tefil::TextFilterBase
 
       # 出力
       out_io.puts line
+
+      #p "test"
+      ## 空行処理
+      case
+      when type == :head1   then out_io.puts
+      when type == :head2   then out_io.puts
+      when type == :head3   then out_io.puts
+      else # type == :pain  then  'do nothing'
+      end
+
     end
   end
 end
