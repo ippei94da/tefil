@@ -11,10 +11,10 @@ require "fileutils"
 class SampleFilter < Tefil::TextFilterBase
   public :process_string
 
-  def process_stream(in_file, out_file)
+  def process_stream(in_io, out_io)
     #results = []
-    in_file.each do |line|
-      out_file.puts line.sub('a', 'A')
+    in_io.each do |line|
+      out_io.print line.sub('a', 'A')
     end
   end
 end
@@ -137,10 +137,9 @@ class TestTefil < Test::Unit::TestCase
   end
 
   def test_process_string
-    result = @t00.process_string("abc\naabbcc\n")
-    correct = "Abc\nAabbcc\n"
+    result = @t00.process_string("abc\naabbcc")
+    correct = "Abc\nAabbcc"
     assert_equal(correct, result)
-
   end
 
 #  def test_self_filter

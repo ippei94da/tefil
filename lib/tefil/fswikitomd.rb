@@ -57,7 +57,7 @@ class Tefil::FswikiToMd < Tefil::TextFilterBase
       end
 
       # 出力
-      out_io.puts line
+      out_io.print line
 
       #p "test"
       ## 空行処理
