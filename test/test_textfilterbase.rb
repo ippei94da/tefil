@@ -9,6 +9,8 @@ require "tempfile"
 require "fileutils"
 
 class SampleFilter < Tefil::TextFilterBase
+  public :process_string
+
   def process_stream(in_file, out_file)
     #results = []
     in_file.each do |line|
@@ -132,6 +134,13 @@ class TestTefil < Test::Unit::TestCase
     assert_equal(["Abc\n", "def\n"], tmp)
     tmp = File.open(TMP01, "r").readlines
     assert_equal(["Abc\n", "def\n", "cAb\n"], tmp)
+  end
+
+  def test_process_string
+    result = @t00.process_string("abc\naabbcc\n")
+    correct = "Abc\nAabbcc\n"
+    assert_equal(correct, result)
+
   end
 
 #  def test_self_filter

@@ -105,5 +105,13 @@ class Tefil::TextFilterBase
     raise NotRedefinedMethodError
   end
 
+  def process_string(in_str)
+    in_io = StringIO.open in_str
+    out_io = StringIO.new
+    process_stream(in_io, out_io)
+    out_io.rewind
+    out_io.read
+  end
+
 end
 

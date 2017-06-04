@@ -5,7 +5,8 @@ require "helper"
 require "stringio"
 
 class Tefil::FswikiToMd
-  public :process_stream
+  public :process_stream,
+   :process_string
 end
 
 class TC_FswikiToMd < Test::Unit::TestCase
@@ -13,26 +14,42 @@ class TC_FswikiToMd < Test::Unit::TestCase
     @f00 = Tefil::FswikiToMd.new()
   end
 
+  def test_process_string
+    assert_equal("# head1\n\n", @f00.process_string("!!! head1\n"))
+    assert_equal("# head2\n\n", @f00.process_string("!!! head2\n"))
+    assert_equal("# head3\n\n", @f00.process_string("!!! head3\n"))
+
+    assert_equal("abc *italic* def",
+                 @f00.process_string("abc ''italic'' def"))
+    assert_equal("abc **bold** def",
+                 @f00.process_string("abc '''bold''' def"))
+    assert_equal( "* item",
+                 @f00.process_string("* item"))
+    assert_equal("    * item",
+                 @f00.process_string("** item"))
+    assert_equal("        * item",
+                 @f00.process_string("*** item"))
+    assert_equal("            * item",
+                 @f00.process_string("**** item"))
+    assert_equal("1. enum",
+                 @f00.process_string("+ enum"))
+    assert_equal("    1. enum",
+                 @f00.process_string("++ enum"))
+    assert_equal("        1. enum",
+                 @f00.process_string("+++ enum"))
+    assert_equal("            1. enum",
+                 @f00.process_string("++++ enum"))
+    assert_equal("[Google](http://www.google.co.jp/)",
+                 @f00.process_string("[Google|http://www.google.co.jp/]" ))
+    assert_equal("    formatted text",
+                 @f00.process_string(" formatted text"))
+    assert_equal("---",
+                 @f00.process_string("----"))
+    assert_equal("<!-- comment-->",
+                 @f00.process_string("// comment"))
+  end
+
   def test_process_stream
-    #a = StringIO.open( "abc\nABC\n")
-    #pp a.readlines
-
-    #exit
-
-    in_io = StringIO.open("!!! head1\n")
-    out_io = StringIO.new
-    @f00.process_stream(in_io, out_io)
-    out_io.rewind
-    assert_equal("# head1\n\n", out_io.read)
-
-    in_io = StringIO.open("!!! head2\n")
-    out_io = StringIO.new
-    @f00.process_stream(in_io, out_io)
-    out_io.rewind
-    assert_equal("# head2\n\n", out_io.read)
-
-    exit
-    #
     input = <<HERE
 !!! head1
 !! head2
@@ -58,43 +75,43 @@ HERE
 #"" quotation'
 #*http://www.yahoo.co.jp/"
 
-    correct = <<HERE
-# head1
-
-# head1
-
-## head2
-
-### head3
-
-abc *italic* def
-abc **bold** def
-
-* item
-    * item
-        * item
-            * item
-1. enum
-    1. enum
-        1. enum
-            1. enum
-
-[Google](http://www.google.co.jp/)
-    formatted text
----
-<!-- comment-->
-HERE
-
-
-      in_io = StringIO.new
-      in_io.puts input
-      in_io.rewind
-      out_io = StringIO.new
-      @f00.process_stream(in_io, out_io)
-      out_io.rewind
-      result = out_io.read
-
-      assert_equal(correct, result)
+#    correct = <<HERE
+## head1
+#
+## head1
+#
+### head2
+#
+#### head3
+#
+#abc *italic* def
+#abc **bold** def
+#
+#* item
+#    * item
+#        * item
+#            * item
+#1. enum
+#    1. enum
+#        1. enum
+#            1. enum
+#
+#[Google](http://www.google.co.jp/)
+#    formatted text
+#---
+#<!-- comment-->
+#HERE
+#
+#
+#      in_io = StringIO.new
+#      in_io.puts input
+#      in_io.rewind
+#      out_io = StringIO.new
+#      @f00.process_stream(in_io, out_io)
+#      out_io.rewind
+#      result = out_io.read
+#
+#      assert_equal(correct, result)
     #end
 
     #[
