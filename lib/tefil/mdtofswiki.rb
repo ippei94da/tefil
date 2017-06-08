@@ -18,10 +18,10 @@ class Tefil::MdToFswiki < Tefil::TextFilterBase
       when line.sub!(/^    \*/  , '') then type = :item3
       when line.sub!(/^  \*/    , '') then type = :item2
       when line.sub!(/^\*/      , '') then type = :item1
-      when line.sub!(/^      \d+./, '') then type = :enum4
-      when line.sub!(/^    \d+./  , '') then type = :enum3
-      when line.sub!(/^  \d+./    , '') then type = :enum2
-      when line.sub!(/^\d+./      , '') then type = :enum1
+      when line.sub!(/^      \d+\./, '') then type = :enum4
+      when line.sub!(/^    \d+\./  , '') then type = :enum3
+      when line.sub!(/^  \d+\./    , '') then type = :enum2
+      when line.sub!(/^\d+\./      , '') then type = :enum1
       when line.sub!(/^    /    , '') then type = :pre
       when line.sub!(/^---/     , '') then type = :hline
       else                                 type = :plain
@@ -54,7 +54,7 @@ class Tefil::MdToFswiki < Tefil::TextFilterBase
       end
 
       # 出力
-      out_io.puts line
+      out_io.print line
     end
   end
 end

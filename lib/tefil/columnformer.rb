@@ -49,6 +49,7 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
     matrix.each do |row|
       new_items = []
       row.each_with_index do |item, index|
+        item = item.to_s
         method = (@just.to_s + "_just").to_sym
         new_items[index] = item.send(method, max_lengths[index])
       end

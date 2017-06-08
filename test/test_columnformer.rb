@@ -38,7 +38,6 @@ class TC_ColumnFormer < Test::Unit::TestCase
     io.rewind
     assert_equal("  a   ab\n  abc a\n", io.read)
 
-
     io = StringIO.new
     @cf01.form(matrix, io)
     io.rewind
@@ -59,6 +58,16 @@ class TC_ColumnFormer < Test::Unit::TestCase
     @cf00.form(matrix, io)
     io.rewind
     assert_equal("abc    def\nあいう えおか\n", io.read)
+
+    ##### not string
+    io = StringIO.new
+    matrix = [
+      [0, 1],
+      [2, 3],
+    ]
+    @cf00.form(matrix, io)
+    io.rewind
+    assert_equal("0 1\n2 3\n", io.read)
 
     ####
     
