@@ -4,8 +4,9 @@
 
 * bin/fswiki2md: add new line after header
 * bugfix for new line at the end of the stream
-* Enable to use not String in the matrix for Tefil::ColumnFormer.form
+* Enable to use not String in the matrix for Tefil::ColumnFormer#form
 * bugfix for bin/md2fswiki
+* add bin/correlation
 
 
 == Version 0.1.4 [2017-05-31] released

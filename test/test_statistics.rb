@@ -4,11 +4,16 @@
 require "helper"
 require "stringio"
 
-#class Tefil::IndentConverter
-#  public :process_stream
-#end
+class Tefil::Statistics
+  #public :process_stream
+  #public :calc_sum, :calc_average, :calc_variance, :calc_standard_deviation
+
+end
 
 class TC_Statistics < Test::Unit::TestCase
+
+  TOLERANCE = 1.0E-10
+
   def setup
     @s00 = Tefil::Statistics.new()
   end
@@ -32,7 +37,22 @@ class TC_Statistics < Test::Unit::TestCase
       "standard_deviation: 0.816496580927726\n"
     assert_equal(correct, result)
   end
+
+  def test_calc_sum
+    assert_equal(6.0, Tefil::Statistics.calc_sum([1.0, 2.0, 3.0]))
+  end
+
+  def test_calc_average
+    assert_equal(2.0, Tefil::Statistics.calc_average([1.0, 2.0, 3.0]))
+  end
+
+  def test_calc_variance
+    assert_in_delta(0.6666666666666666, Tefil::Statistics.calc_variance([1.0, 2.0, 3.0]), TOLERANCE)
+  end
+
+  def test_calc_standard_deviation
+    assert_in_delta(0.816496580927726, Tefil::Statistics.calc_standard_deviation([1.0, 2.0, 3.0]), TOLERANCE)
+  end
+
 end
-
-
 

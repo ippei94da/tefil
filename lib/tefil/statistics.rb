@@ -8,22 +8,37 @@ class Tefil::Statistics < Tefil::TextFilterBase
     super(options)
   end
 
-  def process_stream(in_io, out_io)
-    data = in_io.readlines.map{|l| l.to_f}
+  def self.calc_sum(data)
+    result = 0.0
+    data.each { |datum| result += datum }
+    result
+  end
 
-    sum = 0.0
-    data.each { |datum| sum += datum }
+  def self.calc_average(data, sum: nil)
+    sum ||= calc_sum(data) 
+    sum / data.size.to_f
+  end
 
-    average = sum / data.size.to_f
-
-    #variance
+  def self.calc_variance(data, average: nil)
+    average ||= calc_average(data)
     tmp = 0.0
     data.each { |datum| tmp += (datum - average)**2 }
-    variance = tmp / data.size.to_f
+    tmp / data.size.to_f
+  end
 
-    #standard deviation
-    standard_deviation = Math::sqrt(variance)
+  def self.calc_standard_deviation(data, variance: nil)
+    variance ||= calc_variance(data)
+    Math::sqrt(variance)
+  end
 
+
+  def process_stream(in_io, out_io)
+    data = in_io.readlines.map{|l| l.to_f}
+    sum                = self.class.calc_sum(data)
+    average            = self.class.calc_average(data,            sum:      sum)
+    variance           = self.class.calc_variance(data,           average:  average)
+    standard_deviation = self.class.calc_standard_deviation(data, variance: variance)
+  
     out_io.puts "sample:             #{data.size}\n"
     out_io.puts "highest:            #{data.max}\n"
     out_io.puts "lowest:             #{data.min}\n"
@@ -32,6 +47,7 @@ class Tefil::Statistics < Tefil::TextFilterBase
     out_io.puts "variance:           #{variance}"
     out_io.puts "standard_deviation: #{standard_deviation}"
   end
+
 
 end
 
