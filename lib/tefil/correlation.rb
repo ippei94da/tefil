@@ -6,7 +6,7 @@ class Tefil::Correlation < Tefil::TextFilterBase
 
   def initialize(options = {})
     options[:smart_filename] = true
-    @minimum = options[:minimum]
+    #@minimum = options[:minimum]
     super(options)
   end
 
@@ -47,9 +47,6 @@ class Tefil::Correlation < Tefil::TextFilterBase
       "least square 1st degree : y = a1 x + a0, a1 = %f, a0 = %f\n",
        c1, c0
     )
-    
-
-
   end
 
   private

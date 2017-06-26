@@ -1,4 +1,3 @@
-
 #! /usr/bin/env ruby
 # coding: utf-8
 
@@ -27,6 +26,11 @@ class TC_Correlation < Test::Unit::TestCase
     $stdin.puts "28 55"
     $stdin.puts "50 87"
     $stdin.puts "76 93"
+    #$stdin.puts "12 28 12 28"
+    #$stdin.puts "38 35 38 35"
+    #$stdin.puts "28 55 28 55"
+    #$stdin.puts "50 87 50 87"
+    #$stdin.puts "76 93 76 93"
     $stdin.rewind
     #str = capture_stdout{}
     result = capture_stdout{ @c00.filter([])}
