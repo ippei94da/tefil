@@ -71,6 +71,7 @@ class Tefil::TextFilterBase
         rescue ArgumentError, Errno::EISDIR
           $stderr.puts $!
           next
+        rescue Errno::EPIPE
         end
 
         if @overwrite
