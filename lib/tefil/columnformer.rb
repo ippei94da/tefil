@@ -29,12 +29,16 @@ class Tefil::ColumnFormer < Tefil::TextFilterBase
   def initialize(options = {})
     @just = options[:just] || :left
     @separator = options[:separator] || ' '
+    @transpose = options[:transpose]
     super(options)
   end
 
   #def form(matrix, io = $stdout, separator = " ", left = false)
   def form(matrix, io = $stdout, indent = 0)
     #Obtain max length for each column.
+
+    matrix = matrix.transpose if @transpose
+
     max_lengths = []
     matrix.each do |row|
       row.each_with_index do |item, index|

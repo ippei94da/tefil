@@ -15,6 +15,7 @@ class TC_ColumnFormer < Test::Unit::TestCase
     @cf00 = Tefil::ColumnFormer.new
     @cf01 = Tefil::ColumnFormer.new({:just => :right})
     @cf02 = Tefil::ColumnFormer.new({:separator => ','})
+    @cf03 = Tefil::ColumnFormer.new({:transpose => true})
   end
 
   def test_print_size
@@ -69,8 +70,15 @@ class TC_ColumnFormer < Test::Unit::TestCase
     io.rewind
     assert_equal("0 1\n2 3\n", io.read)
 
-    ####
-    
+    #### transpose
+    io = StringIO.new
+    matrix = [
+      [0, 1],
+      [2, 3],
+    ]
+    @cf03.form(matrix, io)
+    io.rewind
+    assert_equal("0 2\n1 3\n", io.read)
   end
 end
 

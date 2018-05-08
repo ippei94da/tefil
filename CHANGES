@@ -7,6 +7,8 @@
 * delete bin/statistics # move to gem 'malge'
 * catch broken pipe and do nothing
 
+* bin/columnform: add --transpose option
+
 == Version 0.1.4 [2017-05-31] released
 
 * indent width is modified to 2

@@ -19,6 +19,7 @@ op.on("-o"     , "--overwrite"     , "Overwrite"){    OPTIONS[:overwrite] = true
 op.on("-s char", "--separator=char", "Indicate separator"){|val| OPTIONS[:separator] = val}
 op.on("-l"     , "--left-just"   , "Left justified (Default)" ){ OPTIONS[:just] = :left}
 op.on("-r"     , "--right-just"  , "Right justified"){ OPTIONS[:just] = :right}
+op.on("-t"     , "--transpose"  , "Transpose matrix"){ OPTIONS[:transpose] = true}
 op.parse!(ARGV)
 
 ## default settings
