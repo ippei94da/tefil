@@ -14,7 +14,7 @@ require 'tefil/indentstatistics'
 require 'tefil/linesubstituter'
 require 'tefil/percentpacker'
 require 'tefil/zshescaper'
-require 'tefil/eachsentence.rb'
+require 'tefil/linesplitter.rb'
 require 'tefil/fswikitomd.rb'
 require 'tefil/mdtofswiki.rb'
 

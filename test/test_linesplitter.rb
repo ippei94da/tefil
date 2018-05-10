@@ -6,9 +6,9 @@ require "stringio"
 
 # 元々の行末は保存する。
 # 消すようにすると、空行などの処理が面倒になる。
-class TC_EachSentence < Test::Unit::TestCase
+class TC_LineSplitter < Test::Unit::TestCase
   def setup
-    @test00 = Tefil::EachSentence.new()
+    @test00 = Tefil::LineSplitter.new()
   end
 
   def test_process_stream
