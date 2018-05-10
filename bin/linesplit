@@ -10,15 +10,37 @@ require "tefil"
 
 
 # option analysis
-options = {}
+options = {
+  :period => true,
+  :chars => "",
+  :except => "" 
+}
 op = OptionParser.new
 #op.banner = [
 #  "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 #].join("\n")
-op.on("-o"     , "--overwrite"     , "Overwrite."){    options[:overwrite] = true}
+op.on("-o"     , "--overwrite" , "Overwrite."){ options[:overwrite] =    true}
+op.on("-c str" , "--char=str"  , "Add target chars."){ |v| options[:chars] = v}
+op.on("-e str" , "--except=str"  , "Except strings."){ |v| options[:except] = v}
+op.on("-s"     , "--space"     , "Add space to target chars."){ options[:space] = true}
+op.on("-P"     , "--without-period" , "Exclude period from target chars."){ options[:period] = false}
 op.parse!(ARGV)
 
 options[:overwrite] ||= false
 
-is = Tefil::LineSplitter.new options
+#EXCEPT_WORDS = ["Fig.", "FIG."]
+
+
+target_chars = []
+target_chars += options[:chars].split(" ")
+target_chars << "." if options[:period]
+target_chars << ' ' if options[:space]
+target_chars.uniq!
+
+#pp target_chars; exit
+
+is = Tefil::LineSplitter.new(target_chars: target_chars,
+                             except_words: options[:except].split(" "),
+                             options: options)
+pp is; exit
 is.filter(ARGV)

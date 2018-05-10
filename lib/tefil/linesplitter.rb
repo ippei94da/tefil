@@ -1,14 +1,11 @@
 # coding: utf-8
 class Tefil::LineSplitter < Tefil::TextFilterBase
 
-  END_CHARS = %w(. ? ． 。)
-  EXCEPT_WORDS = ["Fig.", "FIG."]
-
-  def initialize(options = {})
+  def initialize(target_chars: , except_words: [], options: {})
     options[:smart_filename] = true
     @minimum = options[:minimum]
-    @end_chars = options[:endchars] || END_CHARS
-    @except_words = options[:excepts] || EXCEPT_WORDS
+    @target_chars = target_chars
+    @except_words = except_words
     super(options)
   end
 
@@ -20,9 +17,9 @@ class Tefil::LineSplitter < Tefil::TextFilterBase
       #line.gsub!("\n", ' ')
       line.chars.each do |char|
         new_line += char
-        new_line += "\n" if (@end_chars.include?(char))
+        new_line += "\n" if (@target_chars.include?(char))
       end
-      EXCEPT_WORDS.each do |word|
+      @except_words.each do |word|
         new_line.gsub!(/#{word}\n/, word)
       end
       new_line.gsub!(/\n  */, "\n")

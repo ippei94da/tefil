@@ -8,7 +8,7 @@ require "stringio"
 # 消すようにすると、空行などの処理が面倒になる。
 class TC_LineSplitter < Test::Unit::TestCase
   def setup
-    @test00 = Tefil::LineSplitter.new()
+    @test00 = Tefil::LineSplitter.new(target_chars: ".")
   end
 
   def test_process_stream
@@ -81,6 +81,7 @@ Ghi jhk.
 HERE
     assert_equal(correct, result)
 
+
     # Fig.
     in_io = StringIO.new
     in_io.puts <<HERE
@@ -93,10 +94,29 @@ HERE
     out_io.rewind
     result = out_io.read
     correct = <<HERE
-Including Fig.3.
-Fig. 3?
+Including Fig.
+3.
 Fig.
+3? Fig.
 4 does' not exist.
+HERE
+    assert_equal(correct, result)
+
+    # except
+    in_io = StringIO.new
+    in_io.puts <<HERE
+    Including Fig.3. Fig. 3? Fig.
+    4 does' not exist.
+HERE
+    in_io.rewind
+    out_io = StringIO.new
+    test10 = Tefil::LineSplitter.new(target_chars: ".", except_words: ["FIG.", "Fig."])
+    test10.process_stream(in_io, out_io)
+    out_io.rewind
+    result = out_io.read
+    correct = <<HERE
+Including Fig.3.
+Fig. 3? Fig. 4 does' not exist.
 HERE
     assert_equal(correct, result)
 
@@ -117,7 +137,12 @@ HERE
 くけこ。
 HERE
     assert_equal(correct, result)
+
+
+
+    test10 = Tefil::LineSplitter.new(target_chars: "。 .")
   end
+
 end
 
 
