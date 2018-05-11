@@ -1,14 +1,15 @@
 = tefil changelog
 
+== Version 0.1.5 [2018-05-11] released
+
 * bin/fswiki2md: add new line after header
 * bugfix for new line at the end of the stream
 * Enable to use not String in the matrix for Tefil::ColumnFormer#form
 * bugfix for bin/md2fswiki
 * delete bin/statistics # move to gem 'malge'
 * catch broken pipe and do nothing
-
 * bin/columnform: add --transpose option
-* rename: bin/eachsentence to bin/linesplit
+* rename: bin/eachsentence to bin/linesplit with adding some functions
 
 == Version 0.1.4 [2017-05-31] released
 

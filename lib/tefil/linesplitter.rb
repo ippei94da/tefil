@@ -1,53 +1,46 @@
 # coding: utf-8
 class Tefil::LineSplitter < Tefil::TextFilterBase
 
-  def initialize(target_strs: , except_words: [], options: {})
+  def initialize(separators: , indent_mode: :no, except_words: [], options: {})
     options[:smart_filename] = true
     @minimum = options[:minimum]
-    @target_strs = target_strs
+    @separators = separators
     @except_words = except_words
+    @indent_mode = indent_mode
     super(options)
   end
 
   def process_stream(in_io, out_io)
     results = []
-    #words = []
  
     # prepare substitute info to get back to original for except rule.
     sub_except_words = Marshal.load(Marshal.dump(@except_words))
-    @target_strs.each do |char|
+    @separators.each do |str|
       sub_except_words.map do |word|
-        word.gsub!(char, char + "\n")
+        word.gsub!(str, str + "\n")
       end
     end
-    #pp sub_except_words; exit
 
-    in_io.read.strip.split("\n").each do |line|
-      #new_line = ''
-      #line.gsub!("\n", ' ')
-      #line.strs.each do |char|
-      #  new_line += char
-      #  new_line += "\n" if (@target_strs.include?(char))
+    in_io.read.split("\n").each do |line|
+      #if @indent_mode == :indent
+      #  /^( *)/ =~ line
+      #  head_spaces = $1
       #end
-      #@except_words.each do |word|
-      #  new_line.gsub!(/#{word}\n/, word)
-      #end
-      #new_line.gsub!(/\n  */, "\n")
-      #new_line.strip!
-      #new_line.gsub!(/  */, " ")
-      #results << new_line
-
-      @target_strs.each do |char|
-        line.gsub!(char, char + "\n")
+      @separators.each do |str|
+        line.gsub!(str, str + "\n")
       end
-      #pp line
       @except_words.each_with_index do |word, index|
-        line.gsub!(/#{sub_except_words}\n/, word)
+        line.gsub!(sub_except_words[index], word)
       end
       # 行の頭と末尾の空白 strip
-      line.gsub!(/\n  */, "\n")
-      line.strip!
-      line.gsub!(/  */, " ")
+      if @indent_mode == :strip
+        line.gsub!(/\n  */, "\n")
+        line.strip!
+        line.gsub!(/  */, " ")
+      end
+      #if @indent_mode == :indent
+      #  results << head_spaces + line
+      #end
       results << line
     end
     out_io.puts results.join("\n")

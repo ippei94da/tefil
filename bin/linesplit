@@ -11,8 +11,8 @@ require "tefil"
 
 # option analysis
 options = {
-  :period => true,
-  :strs => "",
+  #:period => true,
+  :separator => ".",
   :except => "" 
 }
 op = OptionParser.new
@@ -20,27 +20,29 @@ op = OptionParser.new
 #  "Usage: #{File.basename("#{__FILE__}")} [options] [files]",
 #].join("\n")
 op.on("-o"     , "--overwrite" , "Overwrite."){ options[:overwrite] =    true}
-op.on("-c str" , "--char=str"  , "Add target strings."){ |v| options[:strs] = v}
+op.on("-t str" , "--separator=str"  , "Target strings. Default value is '.'"){ |v| options[:separator] = v}
 op.on("-e str" , "--except=str"  , "Except strings."){ |v| options[:except] = v}
-op.on("-s"     , "--space"     , "Add space to target strs."){ options[:space] = true}
-op.on("-P"     , "--without-period" , "Exclude period from target strs."){ options[:period] = false}
+op.on("-s"     , "--space"     , "Add space to separators."){ options[:space] = true}
+op.on("-S"     , "--strip"     , "Strip extra space at head and tail of line."){ options[:strip] = true}
 op.parse!(ARGV)
 
 options[:overwrite] ||= false
 
 #EXCEPT_WORDS = ["Fig.", "FIG."]
 
+separators = []
+separators += options[:separator].split(" ")
+separators << ' ' if options[:space]
+separators.uniq!
 
-target_strs = []
-target_strs += options[:strs].split(" ")
-target_strs << "." if options[:period]
-target_strs << ' ' if options[:space]
-target_strs.uniq!
+indent_mode = :no
+indent_mode = :strip if options[:strip]
 
-#pp target_strs; exit
+#pp separators; exit
 
-is = Tefil::LineSplitter.new(target_strs: target_strs,
+is = Tefil::LineSplitter.new(separators: separators,
                              except_words: options[:except].split(" "),
+                             indent_mode: indent_mode,
                              options: options)
-pp is; exit
+#pp is; exit
 is.filter(ARGV)
